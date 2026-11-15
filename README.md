@@ -72,7 +72,7 @@ Every action shows what Windows is doing right now, settings are one click away,
 **Latest GitHub release:**
 👉 [https://github.com/Avazbek22/StereoKeeper/releases/latest](https://github.com/Avazbek22/StereoKeeper/releases/latest)
 
-**Install via WinGet (Windows):** `winget install OlimoffDev.BluetoothHandsFreeToggle`, then run `stereokeeper`. The package ID keeps the former name, so existing installations update as usual.
+**Install via WinGet (Windows):** `winget install OlimoffDev.StereoKeeper`, then run `stereokeeper`.
 
 ---
 
@@ -323,7 +323,7 @@ Showing the status needs no special rights. Windows asks for permission only whe
 
 ### Why is it called StereoKeeper now?
 
-Up to version 2.2 the app was called BluetoothHandsFreeToggle. Version 3.0 renamed it to StereoKeeper: the name says what the app does, keeps your headphones in stereo, and leaves out the Bluetooth trademark. Old GitHub links redirect here, the WinGet package ID `OlimoffDev.BluetoothHandsFreeToggle` stays the same, and the Windows state saved by Hard mode in 2.x is still restored when you turn Always stereo off.
+Up to version 2.2 the app was called BluetoothHandsFreeToggle. Version 3.0 renamed it to StereoKeeper: the name says what the app does, keeps your headphones in stereo, and leaves out the Bluetooth trademark. Old GitHub links redirect here, and the Windows state saved by Hard mode in 2.x is still restored when you turn Always stereo off. The WinGet package moved to `OlimoffDev.StereoKeeper`: if you installed 2.x with WinGet, run `winget uninstall OlimoffDev.BluetoothHandsFreeToggle` and then `winget install OlimoffDev.StereoKeeper`.
 
 ### Do I need to install .NET?
 

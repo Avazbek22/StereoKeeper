@@ -15,9 +15,7 @@ param(
     [ValidateSet("Auto", "New", "Update")]
     [string]$Mode = "Auto",
 
-    # The identifier keeps the name from before StereoKeeper: a new one would be a separate package
-    # and existing installations would not get the update.
-    [string]$PackageIdentifier = "OlimoffDev.BluetoothHandsFreeToggle",
+    [string]$PackageIdentifier = "OlimoffDev.StereoKeeper",
 
     [string]$Repository = "Avazbek22/StereoKeeper",
 
