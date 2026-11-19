@@ -327,7 +327,7 @@ Up to version 2.2 the app was called BluetoothHandsFreeToggle. Version 3.0 renam
 
 ### Do I need to install .NET?
 
-No. The official `win-x64` release is a self-contained single executable. The .NET 10 SDK is required only when building the project from source.
+No. The official `win-x64` and `win-arm64` releases are self-contained single executables. The .NET 10 SDK is required only when building the project from source.
 
 ## For developers
 
@@ -417,7 +417,7 @@ Bug reports, reproducible Windows/Bluetooth edge cases, and focused pull request
 
 The Bluetooth® word mark and logos are registered trademarks owned by Bluetooth SIG, Inc. StereoKeeper is an independent open-source project: it is not affiliated with, endorsed by, or sponsored by Bluetooth SIG, and it claims no rights to these trademarks. The Bluetooth logo in the app icon only shows that the app works with Bluetooth headphones.
 
-Windows is a trademark of the Microsoft group of companies. Other product and company names mentioned here, such as Discord, Microsoft Teams, and Google Chrome, belong to their respective owners and are used only to describe compatibility.
+Windows is a trademark of the Microsoft group of companies. Other product and company names mentioned here, such as Call of Duty, Warzone, Discord, Steam, OBS, and Microsoft Teams, belong to their respective owners and are used only to describe compatibility.
 
 ## License
 
