@@ -72,7 +72,7 @@ Every action shows what Windows is doing right now, settings are one click away,
 **Latest GitHub release:**
 👉 [https://github.com/Avazbek22/StereoKeeper/releases/latest](https://github.com/Avazbek22/StereoKeeper/releases/latest)
 
-**Install via WinGet (Windows):** `winget install OlimoffDev.BluetoothHandsFreeToggle`, then run `stereokeeper`. The package ID keeps the former name, so existing installations update as usual.
+**Install via WinGet (Windows):** `winget install OlimoffDev.StereoKeeper`, then run `stereokeeper`.
 
 ---
 
@@ -323,11 +323,11 @@ Showing the status needs no special rights. Windows asks for permission only whe
 
 ### Why is it called StereoKeeper now?
 
-Up to version 2.2 the app was called BluetoothHandsFreeToggle. Version 3.0 renamed it to StereoKeeper: the name says what the app does, keeps your headphones in stereo, and leaves out the Bluetooth trademark. Old GitHub links redirect here, the WinGet package ID `OlimoffDev.BluetoothHandsFreeToggle` stays the same, and the Windows state saved by Hard mode in 2.x is still restored when you turn Always stereo off.
+Up to version 2.2 the app was called BluetoothHandsFreeToggle. Version 3.0 renamed it to StereoKeeper: the name says what the app does, keeps your headphones in stereo, and leaves out the Bluetooth trademark. Old GitHub links redirect here, and the Windows state saved by Hard mode in 2.x is still restored when you turn Always stereo off. The WinGet package moved to `OlimoffDev.StereoKeeper`: if you installed 2.x with WinGet, run `winget uninstall OlimoffDev.BluetoothHandsFreeToggle` and then `winget install OlimoffDev.StereoKeeper`.
 
 ### Do I need to install .NET?
 
-No. The official `win-x64` release is a self-contained single executable. The .NET 10 SDK is required only when building the project from source.
+No. The official `win-x64` and `win-arm64` releases are self-contained single executables. The .NET 10 SDK is required only when building the project from source.
 
 ## For developers
 
@@ -429,7 +429,7 @@ StereoKeeper collects no data and makes no network connections. See the [privacy
 
 The Bluetooth® word mark and logos are registered trademarks owned by Bluetooth SIG, Inc. StereoKeeper is an independent open-source project: it is not affiliated with, endorsed by, or sponsored by Bluetooth SIG, and it claims no rights to these trademarks. The Bluetooth logo in the app icon only shows that the app works with Bluetooth headphones.
 
-Windows is a trademark of the Microsoft group of companies. Other product and company names mentioned here, such as Discord, Microsoft Teams, and Google Chrome, belong to their respective owners and are used only to describe compatibility.
+Windows is a trademark of the Microsoft group of companies. Other product and company names mentioned here, such as Call of Duty, Warzone, Discord, Steam, OBS, and Microsoft Teams, belong to their respective owners and are used only to describe compatibility.
 
 ## License
 
