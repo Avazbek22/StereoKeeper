@@ -22,69 +22,6 @@ $artifactsRoot = [IO.Path]::GetFullPath((Join-Path $repositoryRoot "artifacts"))
 $releaseRoot = [IO.Path]::GetFullPath((Join-Path $artifactsRoot "release"))
 $runtimeIdentifiers = @("win-x64", "win-arm64")
 
-function Invoke-NativeCommand {
-    param(
-        [Parameter(Mandatory)]
-        [string]$FilePath,
-
-        [Parameter(Mandatory)]
-        [string[]]$Arguments
-    )
-
-    Write-Host "> $FilePath $($Arguments -join ' ')" -ForegroundColor DarkGray
-    $commandOutput = @(& $FilePath @Arguments 2>&1)
-    $exitCode = $LASTEXITCODE
-
-    foreach ($outputLine in $commandOutput) {
-        Write-Host $outputLine
-    }
-
-    if ($exitCode -ne 0) {
-        throw "Command '$FilePath' failed with exit code $exitCode."
-    }
-}
-
-function Get-NativeOutput {
-    param(
-        [Parameter(Mandatory)]
-        [string]$FilePath,
-
-        [Parameter(Mandatory)]
-        [string[]]$Arguments
-    )
-
-    $output = & $FilePath @Arguments
-    if ($LASTEXITCODE -ne 0) {
-        throw "Command '$FilePath' failed with exit code $LASTEXITCODE."
-    }
-
-    return ($output -join "`n").Trim()
-}
-
-function Assert-ReleaseRepositoryState {
-    $currentBranch = Get-NativeOutput "git" @("-C", $repositoryRoot, "branch", "--show-current")
-    if ($currentBranch -ne $ReleaseBranch) {
-        throw "Release builds must run from '$ReleaseBranch'. Current branch: '$currentBranch'."
-    }
-
-    $changes = @(& git -C $repositoryRoot status --porcelain --untracked-files=all)
-    if ($LASTEXITCODE -ne 0) {
-        throw "Unable to inspect the Git working tree."
-    }
-
-    if ($changes.Count -gt 0) {
-        throw "Release builds require a clean working tree.`n$($changes -join "`n")"
-    }
-
-    Invoke-NativeCommand "git" @("-C", $repositoryRoot, "fetch", "--quiet", "origin", $ReleaseBranch)
-
-    $headCommit = Get-NativeOutput "git" @("-C", $repositoryRoot, "rev-parse", "HEAD")
-    $remoteCommit = Get-NativeOutput "git" @("-C", $repositoryRoot, "rev-parse", "origin/$ReleaseBranch")
-    if ($headCommit -ne $remoteCommit) {
-        throw "Local '$ReleaseBranch' must exactly match 'origin/$ReleaseBranch' before publishing."
-    }
-}
-
 function Assert-SafeReleasePath {
     $expectedPrefix = $artifactsRoot.TrimEnd(
         [IO.Path]::DirectorySeparatorChar,
@@ -110,7 +47,7 @@ if ($SkipRepositoryChecks) {
     Write-Warning "Repository branch and cleanliness checks were explicitly skipped."
 }
 else {
-    Assert-ReleaseRepositoryState
+    Assert-ReleaseRepositoryState -RepositoryRoot $repositoryRoot -ReleaseBranch $ReleaseBranch
 }
 
 Assert-SafeReleasePath
