@@ -46,7 +46,7 @@ $storeArtifactsRoot = Join-Path $artifactsRoot "store"
 $architectures = [ordered]@{ "win-x64" = "x64"; "win-arm64" = "arm64" }
 $manifestNamespace = "http://schemas.microsoft.com/appx/manifest/foundation/windows10"
 
-# Listing languages are the package languages; the WinGet texts are the source for both.
+# The WinGet texts are the source of the package name, description and listing.
 # Partner Center has no es-419, so Latin American Spanish is listed as es-mx.
 $storeLanguageOverrides = @{ "es-419" = "es-mx" }
 
@@ -94,22 +94,29 @@ function Read-StoreTexts {
     return $texts
 }
 
-function Assert-ManifestLanguages {
+# The Store languages are the Resource entries of Package.appxmanifest, in its order: the package
+# says which languages it supports, and the listing gets a column for each. Every one of them needs
+# its texts in winget-locales.json. To list the app in another language, add its Resource line.
+function Select-ManifestTexts {
     param([Collections.Specialized.OrderedDictionary]$Texts)
 
     [xml]$manifest = Get-Content -Raw -LiteralPath $manifestPath
     $declared = @($manifest.Package.Resources.Resource | ForEach-Object { $_.Language.ToLowerInvariant() })
-    $expected = @($Texts.Keys)
-
-    $missing = @($expected | Where-Object { $declared -notcontains $_ })
-    $extra = @($declared | Where-Object { $expected -notcontains $_ })
-    if ($missing.Count -gt 0 -or $extra.Count -gt 0) {
-        throw "Package.appxmanifest languages differ from winget-locales.json. Missing: $($missing -join ', '). Extra: $($extra -join ', ')."
-    }
-
-    if ($declared[0] -ne "en-us") {
+    if ($declared.Count -eq 0 -or $declared[0] -ne "en-us") {
         throw "The first manifest language must be en-us; Partner Center treats it as the default."
     }
+
+    $missing = @($declared | Where-Object { -not $Texts.Contains($_) })
+    if ($missing.Count -gt 0) {
+        throw "winget-locales.json has no texts for the manifest languages: $($missing -join ', ')."
+    }
+
+    $selected = [ordered]@{}
+    foreach ($language in $declared) {
+        $selected[$language] = $Texts[$language]
+    }
+
+    return $selected
 }
 
 function Write-ResourceStrings {
@@ -287,13 +294,12 @@ if (-not $packageVersion.EndsWith(".0")) {
     throw "Store packages need a version that ends in .0 (the revision is reserved by the Store). Got $packageVersion."
 }
 
-$texts = Read-StoreTexts
-Assert-ManifestLanguages $texts
+$texts = Select-ManifestTexts (Read-StoreTexts)
 
 if ($ValidateConfigurationOnly) {
     Write-Host "Store configuration is valid:" -ForegroundColor Green
     Write-Host "  Package version : $packageVersion"
-    Write-Host "  Languages       : $($texts.Count)"
+    Write-Host "  Languages       : $($texts.Keys -join ', ')"
     return
 }
 
@@ -432,4 +438,4 @@ Remove-Item -LiteralPath $stagingDirectory -Recurse -Force
 Write-Host
 Write-Host "Store submission $($versionInfo.ReleaseTag) is ready:" -ForegroundColor Green
 Write-Host "  $uploadPath ($([Math]::Round((Get-Item -LiteralPath $uploadPath).Length / 1MB, 2)) MiB)"
-Write-Host "  $listingCsv ($($texts.Count) languages)"
+Write-Host "  $listingCsv ($($texts.Keys -join ', '))"

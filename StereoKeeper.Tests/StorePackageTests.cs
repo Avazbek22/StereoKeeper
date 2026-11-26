@@ -23,17 +23,19 @@ public sealed class StorePackageTests
     private static readonly XDocument Manifest = XDocument.Load(Path.Combine(StoreRoot, "Package.appxmanifest"));
 
     [Fact]
-    public void EveryInterfaceLanguageIsAStoreLanguage()
+    public void TheStoreLanguagesAreInterfaceLanguagesWithEnglishFirst()
     {
         var declared = Manifest.Root!.Element(Foundation + "Resources")!
             .Elements(Foundation + "Resource")
             .Select(resource => (string)resource.Attribute("Language")!)
             .ToList();
 
-        var expected = AppLanguageCatalog.All.Select(language => ToStoreLanguage(language.Code)).ToList();
+        var interfaceLanguages = AppLanguageCatalog.All.Select(language => ToStoreLanguage(language.Code)).ToHashSet(StringComparer.Ordinal);
 
+        Assert.NotEmpty(declared);
         Assert.Equal("en-us", declared[0]);
-        Assert.Equal(expected.Order(StringComparer.Ordinal), declared.Order(StringComparer.Ordinal));
+        Assert.Equal(declared.Count, declared.Distinct(StringComparer.Ordinal).Count());
+        Assert.All(declared, language => Assert.Contains(language, interfaceLanguages));
     }
 
     [Fact]

@@ -36,39 +36,12 @@
     <TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.19041.0" MaxVersionTested="10.0.26100.0" />
   </Dependencies>
 
-  <!-- One entry per interface language (Localization/AppLanguageCatalog.cs). Partner Center builds
-       the listing languages from these; Latin American Spanish is listed as es-mx. -->
+  <!-- The languages the Store lists the app in, en-us first (the default). The app itself has 30
+       interface languages (Localization/AppLanguageCatalog.cs); to list it in more of them, add
+       their lines here, for example <Resource Language="ru-ru" />. Publish-Store.ps1 takes the
+       texts from scripts/winget-locales.json; Latin American Spanish is es-mx in the Store. -->
   <Resources>
     <Resource Language="en-us" />
-    <Resource Language="ru-ru" />
-    <Resource Language="zh-cn" />
-    <Resource Language="zh-tw" />
-    <Resource Language="de-de" />
-    <Resource Language="fr-fr" />
-    <Resource Language="es-es" />
-    <Resource Language="es-mx" />
-    <Resource Language="pt-br" />
-    <Resource Language="pt-pt" />
-    <Resource Language="ja-jp" />
-    <Resource Language="ko-kr" />
-    <Resource Language="pl-pl" />
-    <Resource Language="tr-tr" />
-    <Resource Language="it-it" />
-    <Resource Language="th-th" />
-    <Resource Language="uk-ua" />
-    <Resource Language="cs-cz" />
-    <Resource Language="nl-nl" />
-    <Resource Language="sv-se" />
-    <Resource Language="da-dk" />
-    <Resource Language="nb-no" />
-    <Resource Language="fi-fi" />
-    <Resource Language="hu-hu" />
-    <Resource Language="ro-ro" />
-    <Resource Language="el-gr" />
-    <Resource Language="bg-bg" />
-    <Resource Language="id-id" />
-    <Resource Language="ms-my" />
-    <Resource Language="vi-vn" />
   </Resources>
 
   <Applications>
