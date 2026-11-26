@@ -6,9 +6,9 @@
   Identity Name, Publisher and PublisherDisplayName must match Partner Center
   (Product management > Product identity); Partner Center rejects an upload that differs.
 
-  Capabilities: only runFullTrust. Bring back stereo and Always stereo start the same exe with
-  "--elevated-worker" through the regular UAC prompt, which works inside the package without
-  the allowElevation capability.
+  Capabilities: only runFullTrust. Bring back stereo and Always stereo start the same exe as an
+  elevated worker through the regular UAC prompt, which works inside the package without the
+  allowElevation capability.
 -->
 <Package
   xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
@@ -89,8 +89,8 @@
         </uap3:Extension>
 
         <!-- Start with Windows. Off until the user turns it on in the app's settings; the TaskId is
-             StartupTaskAutostart.TaskId. Started with --tray so it waits in the tray like the
-             Run key entry of the portable exe. -->
+             StartupTaskAutostart.TaskId. Started with the tray switch (LaunchOptions.TrayArgument)
+             so it waits in the tray like the Run key entry of the portable exe. -->
         <desktop:Extension Category="windows.startupTask" Executable="StereoKeeper.exe" EntryPoint="Windows.FullTrustApplication" uap10:Parameters="--tray">
           <desktop:StartupTask TaskId="StereoKeeperStartup" Enabled="false" DisplayName="StereoKeeper" />
         </desktop:Extension>
