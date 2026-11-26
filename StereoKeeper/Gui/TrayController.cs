@@ -42,8 +42,7 @@ public sealed class TrayController : IShell, IDisposable
             ? new InProcessOperationRunner(engine)
             : new ElevatedOperationRunner(executablePath);
 
-        var autostart = new RegistryAutostart(executablePath);
-        autostart.RefreshPath();
+        var autostart = CreateAutostart(executablePath);
 
         _viewModel = new FlyoutViewModel(runner, autostart, new FileGuiSettingsStore(), this, new EngineDiagnosticsSource(engine));
         _monitor = new StatusMonitor(new EngineStatusSource(engine), _viewModel.ApplyStatus);
@@ -162,6 +161,17 @@ public sealed class TrayController : IShell, IDisposable
                 Quit();
                 break;
         }
+    }
+
+    /// <summary>The Store build starts through its package's startup task, the portable exe through the Run key.</summary>
+    private static IAutostart CreateAutostart(string executablePath)
+    {
+        if (PackageIdentity.IsPackaged)
+            return new StartupTaskAutostart();
+
+        var registry = new RegistryAutostart(executablePath);
+        registry.RefreshPath();
+        return registry;
     }
 
     private void UpdateIcon(TrayState state)
