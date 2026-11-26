@@ -268,9 +268,14 @@ function Invoke-Wack {
 
     [xml]$report = Get-Content -Raw -LiteralPath $ReportPath
     $result = $report.REPORT.OVERALL_RESULT
-    $failed = @($report.SelectNodes("//TEST[RESULT='FAIL']") | ForEach-Object { $_.Name })
+    $failed = @($report.SelectNodes("//TEST[RESULT='FAIL']") | ForEach-Object { $_.GetAttribute("NAME") })
     if ($result -ne "PASS") {
         throw "WACK result: $result. Failed tests: $($failed -join ', '). Report: $ReportPath"
+    }
+
+    # Optional tests (blocked executables, for Windows in S mode) may fail without failing the run.
+    if ($failed.Count -gt 0) {
+        Write-Warning "WACK optional tests failed: $($failed -join ', '). Report: $ReportPath"
     }
 
     Write-Host "WACK passed. Report: $ReportPath" -ForegroundColor Green
@@ -290,6 +295,13 @@ if ($ValidateConfigurationOnly) {
     Write-Host "  Package version : $packageVersion"
     Write-Host "  Languages       : $($texts.Count)"
     return
+}
+
+if ($RunWack) {
+    $principal = [Security.Principal.WindowsPrincipal]::new([Security.Principal.WindowsIdentity]::GetCurrent())
+    if (-not $principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
+        throw "-RunWack needs an elevated console: the certification kit installs and starts the package."
+    }
 }
 
 if ($SkipRepositoryChecks) {
@@ -354,10 +366,17 @@ foreach ($runtimeIdentifier in $architectures.Keys) {
         "-p:ContinuousIntegrationBuild=true"
     )
 
+    # Only the exe and its native libraries go into the package. Anything else the publish starts
+    # producing one day (a config file, a content folder) would be silently left out, so stop.
+    # The native libraries ship their own .pdb files despite DebugType=None; those stay out.
+    $published = @(Get-ChildItem -LiteralPath $publishDirectory -Recurse -File | Where-Object { $_.Extension -ne ".pdb" })
+    $unexpected = @($published | Where-Object { $_.DirectoryName -ne $publishDirectory -or $_.Extension -notin @(".exe", ".dll") })
+    if ($unexpected.Count -gt 0) {
+        throw "The $architecture publish has files the package does not take: $($unexpected.FullName -join ', ')."
+    }
+
     New-Item -ItemType Directory -Path $layoutDirectory -Force | Out-Null
-    Get-ChildItem -LiteralPath $publishDirectory -File |
-        Where-Object { $_.Extension -in @(".exe", ".dll") } |
-        Copy-Item -Destination $layoutDirectory
+    $published | Copy-Item -Destination $layoutDirectory
 
     $executable = Get-Item -LiteralPath (Join-Path $layoutDirectory "StereoKeeper.exe")
     if ($executable.VersionInfo.FileVersion -ne $packageVersion) {
