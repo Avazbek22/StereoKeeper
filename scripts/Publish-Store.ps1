@@ -52,7 +52,10 @@ $storeLanguageOverrides = @{ "es-419" = "es-mx" }
 
 $listingDeveloper = "Avazbek Olimov"
 $listingCopyright = "© 2026 Avazbek Olimov"
-$maxSearchTerms = 7
+
+# Store search terms, picked from the WinGet tags in this order. Game and brand names stay out of
+# the keywords; the description names them where they matter.
+$searchTags = @("bluetooth-audio-fix", "bluetooth-headset", "hands-free", "stereo-audio", "low-quality-audio", "a2dp", "hfp")
 
 function Get-StoreLanguage {
     param([string]$Locale)
@@ -200,8 +203,8 @@ function Get-ListingValue {
 
     switch -Regex ($Field) {
         '^Title$' { return "StereoKeeper" }
-        '^ShortDescription$' { return ([string]$Text.ShortDescription).Trim() }
-        '^Description$' { return ([string]$Text.Description).Trim() }
+        '^ShortDescription$' { return ConvertTo-ListingText $Text.ShortDescription }
+        '^Description$' { return ConvertTo-ListingText $Text.Description }
         '^DevStudio$' { return $listingDeveloper }
         '^CopyrightTrademarkInformation$' { return $listingCopyright }
         '^StoreLogo300x300$' { return "StoreLogo300x300.png" }
@@ -218,21 +221,22 @@ function Get-ListingValue {
     }
 }
 
+# Partner Center rejects bare LF line breaks anywhere in the import file, also inside a field.
+function ConvertTo-ListingText {
+    param([string]$Value)
+
+    return ($Value.Trim() -replace '\r?\n', "`r`n")
+}
+
 function Get-SearchTerms {
     param([object]$Text)
 
     # Partner Center allows 7 terms of up to 40 characters and 21 words in total.
-    $terms = [Collections.Generic.List[string]]::new()
-    $words = 0
-    foreach ($tag in @($Text.Tags)) {
-        $term = ([string]$tag).Replace("-", " ").Trim()
-        $termWords = @($term -split '\s+').Count
-        if ($terms.Count -ge $maxSearchTerms -or $term.Length -gt 40 -or $words + $termWords -gt 21) {
-            continue
-        }
-
-        $terms.Add($term)
-        $words += $termWords
+    $tags = @($Text.Tags)
+    $terms = @($searchTags | Where-Object { $tags -contains $_ } | ForEach-Object { $_.Replace("-", " ") })
+    $words = ($terms | ForEach-Object { @($_ -split ' ').Count } | Measure-Object -Sum).Sum
+    if ($terms.Count -gt 7 -or $words -gt 21 -or @($terms | Where-Object { $_.Length -gt 40 }).Count -gt 0) {
+        throw "Search terms exceed the Partner Center limits: $($terms -join ', ')."
     }
 
     return $terms
