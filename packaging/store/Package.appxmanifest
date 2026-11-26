@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Microsoft Store package of StereoKeeper. scripts/Publish-Store.ps1 fills in Version and
+  ProcessorArchitecture and builds one package per architecture from this file.
+
+  Identity Name, Publisher and PublisherDisplayName must match Partner Center
+  (Product management > Product identity); Partner Center rejects an upload that differs.
+
+  Capabilities: only runFullTrust. Bring back stereo and Always stereo start the same exe with
+  "--elevated-worker" through the regular UAC prompt, which works inside the package without
+  the allowElevation capability.
+-->
+<Package
+  xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
+  xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
+  xmlns:uap3="http://schemas.microsoft.com/appx/manifest/uap/windows10/3"
+  xmlns:uap10="http://schemas.microsoft.com/appx/manifest/uap/windows10/10"
+  xmlns:desktop="http://schemas.microsoft.com/appx/manifest/desktop/windows10"
+  xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities"
+  IgnorableNamespaces="uap uap3 uap10 desktop rescap">
+
+  <Identity
+    Name="StarkIndustriesDev.StereoKeeper"
+    Publisher="CN=1BD76FFF-E0E6-4C9D-AD30-0248861C72C8"
+    Version="0.0.0.0"
+    ProcessorArchitecture="neutral" />
+
+  <Properties>
+    <DisplayName>ms-resource:AppDisplayName</DisplayName>
+    <PublisherDisplayName>Stark Industries Dev</PublisherDisplayName>
+    <Description>ms-resource:AppDescription</Description>
+    <Logo>Assets\StoreLogo.png</Logo>
+  </Properties>
+
+  <Dependencies>
+    <TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.19041.0" MaxVersionTested="10.0.26100.0" />
+  </Dependencies>
+
+  <!-- One entry per interface language (Localization/AppLanguageCatalog.cs). Partner Center builds
+       the listing languages from these; Latin American Spanish is listed as es-mx. -->
+  <Resources>
+    <Resource Language="en-us" />
+    <Resource Language="ru-ru" />
+    <Resource Language="zh-cn" />
+    <Resource Language="zh-tw" />
+    <Resource Language="de-de" />
+    <Resource Language="fr-fr" />
+    <Resource Language="es-es" />
+    <Resource Language="es-mx" />
+    <Resource Language="pt-br" />
+    <Resource Language="pt-pt" />
+    <Resource Language="ja-jp" />
+    <Resource Language="ko-kr" />
+    <Resource Language="pl-pl" />
+    <Resource Language="tr-tr" />
+    <Resource Language="it-it" />
+    <Resource Language="th-th" />
+    <Resource Language="uk-ua" />
+    <Resource Language="cs-cz" />
+    <Resource Language="nl-nl" />
+    <Resource Language="sv-se" />
+    <Resource Language="da-dk" />
+    <Resource Language="nb-no" />
+    <Resource Language="fi-fi" />
+    <Resource Language="hu-hu" />
+    <Resource Language="ro-ro" />
+    <Resource Language="el-gr" />
+    <Resource Language="bg-bg" />
+    <Resource Language="id-id" />
+    <Resource Language="ms-my" />
+    <Resource Language="vi-vn" />
+  </Resources>
+
+  <Applications>
+    <Application Id="App" Executable="StereoKeeper.exe" EntryPoint="Windows.FullTrustApplication">
+      <uap:VisualElements
+        DisplayName="ms-resource:AppDisplayName"
+        Description="ms-resource:AppDescription"
+        BackgroundColor="transparent"
+        Square150x150Logo="Assets\Square150x150Logo.png"
+        Square44x44Logo="Assets\Square44x44Logo.png" />
+
+      <Extensions>
+        <!-- "stereokeeper" in Win+R or a terminal, the same command as the WinGet package. -->
+        <uap3:Extension Category="windows.appExecutionAlias" Executable="StereoKeeper.exe" EntryPoint="Windows.FullTrustApplication">
+          <uap3:AppExecutionAlias>
+            <desktop:ExecutionAlias Alias="stereokeeper.exe" />
+          </uap3:AppExecutionAlias>
+        </uap3:Extension>
+
+        <!-- Start with Windows. Off until the user turns it on in the app's settings; the TaskId is
+             StartupTaskAutostart.TaskId. Started with --tray so it waits in the tray like the
+             Run key entry of the portable exe. -->
+        <desktop:Extension Category="windows.startupTask" Executable="StereoKeeper.exe" EntryPoint="Windows.FullTrustApplication" uap10:Parameters="--tray">
+          <desktop:StartupTask TaskId="StereoKeeperStartup" Enabled="false" DisplayName="StereoKeeper" />
+        </desktop:Extension>
+      </Extensions>
+    </Application>
+  </Applications>
+
+  <Capabilities>
+    <rescap:Capability Name="runFullTrust" />
+  </Capabilities>
+</Package>
