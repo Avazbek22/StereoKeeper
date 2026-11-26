@@ -20,25 +20,30 @@ public enum StartupTaskState
 /// </summary>
 internal static unsafe class StartupTaskInterop
 {
-    private const string ClassName = "Windows.ApplicationModel.StartupTask";
+    internal const string ClassName = "Windows.ApplicationModel.StartupTask";
 
-    private static readonly Guid IidStartupTaskStatics = new("ee5b60bd-a148-41a7-b26e-e8b88a1e62f8");
-    private static readonly Guid IidStartupTask = new("f75c23c8-b5f2-4f6c-88dd-36cb1d599d17");
-    private static readonly Guid IidAsyncInfo = new("00000036-0000-0000-c000-000000000046");
+    // The interface IDs and vtable slots below are checked against the Windows metadata in
+    // System32\WinMetadata by StartupTaskInteropTests, so a typo cannot reach a user.
+    internal static readonly Guid IidStartupTaskStatics = new("ee5b60bd-a148-41a7-b26e-e8b88a1e62f8");
+    internal static readonly Guid IidStartupTask = new("f75c23c8-b5f2-4f6c-88dd-36cb1d599d17");
+    internal static readonly Guid IidAsyncInfo = new("00000036-0000-0000-c000-000000000046");
 
-    private static readonly TimeSpan AsyncTimeout = TimeSpan.FromSeconds(10);
+    // The calls run on the UI thread and normally finish within milliseconds; a hung broker must
+    // not freeze the panel for long.
+    private static readonly TimeSpan AsyncTimeout = TimeSpan.FromSeconds(5);
 
     // Slots after IUnknown (0-2) and IInspectable (3-5).
-    private const int StaticsGetAsync = 7;
-    private const int TaskRequestEnableAsync = 6;
-    private const int TaskDisable = 7;
-    private const int TaskGetState = 8;
-    private const int AsyncInfoGetStatus = 7;
-    private const int AsyncInfoGetErrorCode = 8;
-    private const int AsyncOperationGetResults = 8;
+    internal const int StaticsGetAsync = 7;
+    internal const int TaskRequestEnableAsync = 6;
+    internal const int TaskDisable = 7;
+    internal const int TaskGetState = 8;
+    internal const int AsyncInfoGetStatus = 7;
+    internal const int AsyncInfoGetErrorCode = 8;
+    internal const int AsyncInfoCancel = 9;
+    internal const int AsyncOperationGetResults = 8;
 
-    private const int AsyncStatusStarted = 0;
-    private const int AsyncStatusCompleted = 1;
+    internal const int AsyncStatusStarted = 0;
+    internal const int AsyncStatusCompleted = 1;
 
     public static StartupTaskState GetState(string taskId)
         => WithTask(taskId, task =>
@@ -133,6 +138,17 @@ internal static unsafe class StartupTaskInterop
         }
     }
 
+    /// <summary>
+    /// Whether Windows can create the startup task class at all; true on every supported Windows,
+    /// with or without a package. For the tests, which run outside a package.
+    /// </summary>
+    internal static bool CanActivate()
+    {
+        var factory = GetActivationFactory();
+        Marshal.Release(factory);
+        return factory != 0;
+    }
+
     private static nint GetActivationFactory()
     {
         var name = CreateString(ClassName);
@@ -165,7 +181,11 @@ internal static unsafe class StartupTaskInterop
                     break;
 
                 if (stopwatch.Elapsed > AsyncTimeout)
+                {
+                    // Let Windows drop the request instead of finishing it after we gave up.
+                    _ = ((delegate* unmanaged[Stdcall]<nint, int>)Slot(info, AsyncInfoCancel))(info);
                     throw new TimeoutException("Windows did not answer the startup task request.");
+                }
 
                 Thread.Sleep(5);
             }

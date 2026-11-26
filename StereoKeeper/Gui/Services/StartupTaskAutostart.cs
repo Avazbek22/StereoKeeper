@@ -47,8 +47,12 @@ public sealed class StartupTaskAutostart : IAutostart
         {
             if (!enabled)
             {
+                // A policy that turns the task on cannot be overridden by the app.
+                if (state == StartupTaskState.EnabledByPolicy)
+                    return false;
+
                 _task.Disable();
-                return true;
+                return TryRead(out var after) && !IsOn(after);
             }
 
             switch (state)
@@ -59,7 +63,12 @@ public sealed class StartupTaskAutostart : IAutostart
                 case StartupTaskState.DisabledByPolicy:
                     return false;
                 default:
-                    return IsOn(_task.RequestEnable());
+                    var result = _task.RequestEnable();
+                    // The user may have turned the task off in Task Manager a moment ago.
+                    if (result == StartupTaskState.DisabledByUser)
+                        _openStartupSettings();
+
+                    return IsOn(result);
             }
         }
         catch (Exception exception) when (IsWindowsFailure(exception))
