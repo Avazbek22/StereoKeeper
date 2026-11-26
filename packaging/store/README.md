@@ -31,9 +31,8 @@ WinGet package.
 
 The listing texts come from `scripts/winget-locales.json`, so the Store and WinGet say the same
 thing. The Store lists the app in the languages of the `Resources` element of
-`Package.appxmanifest`, for now English only; the app itself still has all 30 interface
-languages. To list it in another language, add its `Resource` line: the texts for all 30 are
-ready. Latin American Spanish is `es-mx` in the Store, which has no `es-419`.
+`Package.appxmanifest`: all 30 interface languages, en-us first. Latin American Spanish is
+`es-mx` in the Store, which has no `es-419`.
 
 ## Every release
 
