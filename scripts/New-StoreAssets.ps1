@@ -4,14 +4,13 @@ param(
     [string]$ListingDirectory
 )
 
-# Draws the Microsoft Store images from the app icon and the README screenshots:
+# Draws the Microsoft Store images from the app icon:
 # - packaging/store/Assets: the package logos. Small sizes come straight from the hand-drawn
 #   frames of AppIcon.ico, larger ones are scaled down from AppIcon.png, so the Start menu, the
 #   taskbar and the Store show the same logo as the exe.
-# - packaging/store/listing: the 300 x 300 Store logo and the screenshots for Partner Center.
-#   The Store wants desktop screenshots of at least 1366 x 768, so each README screenshot is
-#   centered on a canvas of that size instead of being scaled up.
-# Rerun after the icon or the screenshots change and commit the result.
+# - packaging/store/listing: the 300 x 300 Store logo for Partner Center.
+# New-StoreScreenshots.ps1 draws the screenshots. Rerun after the icon changes and commit the
+# result.
 
 Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
@@ -26,13 +25,6 @@ if (-not $OutputDirectory) {
 if (-not $ListingDirectory) {
     $ListingDirectory = Join-Path $repositoryRoot "packaging\store\listing"
 }
-
-$screenshots = [ordered]@{
-    "01-panel.png" = Join-Path $repositoryRoot ".github\assets\app-panel.png"
-    "02-screens.png" = Join-Path $repositoryRoot ".github\assets\app-screens.png"
-}
-$screenshotSize = [Drawing.Size]::new(1366, 768)
-$screenshotBackground = [Drawing.Color]::FromArgb(0xE6, 0xEA, 0xEF)
 
 $scales = @(100, 125, 150, 200, 400)
 $targetSizes = @(16, 20, 24, 30, 32, 36, 40, 44, 48, 60, 64, 72, 80, 96, 256)
@@ -119,34 +111,6 @@ function Save-Image {
     }
 }
 
-function Save-Screenshot {
-    param(
-        [string]$Name,
-        [string]$SourcePath
-    )
-
-    $source = [Drawing.Bitmap]::new($SourcePath)
-    $bitmap = [Drawing.Bitmap]::new($screenshotSize.Width, $screenshotSize.Height, [Drawing.Imaging.PixelFormat]::Format32bppArgb)
-    $graphics = [Drawing.Graphics]::FromImage($bitmap)
-    try {
-        if ($source.Width -gt $screenshotSize.Width -or $source.Height -gt $screenshotSize.Height) {
-            throw "Screenshot '$SourcePath' is larger than $($screenshotSize.Width) x $($screenshotSize.Height)."
-        }
-
-        $graphics.Clear($screenshotBackground)
-        $graphics.DrawImageUnscaled(
-            $source,
-            [int](($screenshotSize.Width - $source.Width) / 2),
-            [int](($screenshotSize.Height - $source.Height) / 2))
-        $bitmap.Save((Join-Path $script:screenshotDirectory $Name), [Drawing.Imaging.ImageFormat]::Png)
-    }
-    finally {
-        $graphics.Dispose()
-        $bitmap.Dispose()
-        $source.Dispose()
-    }
-}
-
 function Reset-Directory {
     param([string]$Path)
 
@@ -161,10 +125,8 @@ function Reset-Directory {
 $frames = Read-IconFrames $iconPath
 $master = [Drawing.Bitmap]::new($pngPath)
 
-$screenshotDirectory = Join-Path $ListingDirectory "Screenshots"
 Reset-Directory $OutputDirectory
 Reset-Directory $ListingDirectory
-Reset-Directory $screenshotDirectory
 
 try {
     foreach ($scale in $scales) {
@@ -189,9 +151,6 @@ try {
     }
 
     Save-Image "StoreLogo300x300.png" 300 300 -Directory $ListingDirectory
-    foreach ($name in $screenshots.Keys) {
-        Save-Screenshot $name $screenshots[$name]
-    }
 }
 finally {
     $master.Dispose()
@@ -205,6 +164,6 @@ $tooLarge = @($packageImages | Where-Object { $_.Length -gt 200KB })
 if ($tooLarge.Count -gt 0) {
     throw "The Store rejects package images over 200 KB: $($tooLarge.Name -join ', ')."
 }
-$listingImages = @(Get-ChildItem -LiteralPath $ListingDirectory -Filter "*.png" -Recurse)
+$listingImages = @(Get-ChildItem -LiteralPath $ListingDirectory -Filter "*.png")
 Write-Host "Wrote $($packageImages.Count) package images to $OutputDirectory" -ForegroundColor Green
 Write-Host "Wrote $($listingImages.Count) listing images to $ListingDirectory" -ForegroundColor Green

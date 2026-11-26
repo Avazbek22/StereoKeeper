@@ -178,17 +178,30 @@ function New-StoreListing {
 
     New-Item -ItemType Directory -Path $Destination -Force | Out-Null
     Copy-Item -LiteralPath (Join-Path $listingSourceDirectory "StoreLogo300x300.png") -Destination $Destination
-    Copy-Item -LiteralPath (Join-Path $listingSourceDirectory "Screenshots") -Destination $Destination -Recurse
-    $screenshots = @(Get-ChildItem -LiteralPath (Join-Path $Destination "Screenshots") -Filter "*.png" | Sort-Object Name)
 
+    # Each language shows the panel in its own language (New-StoreScreenshots.ps1).
     $languages = @($Texts.Keys)
+    $screenshots = @{}
+    foreach ($language in $languages) {
+        $source = Join-Path $listingSourceDirectory "Screenshots\$language"
+        $images = @(Get-ChildItem -LiteralPath $source -Filter "*.png" -ErrorAction SilentlyContinue | Sort-Object Name)
+        if ($images.Count -eq 0) {
+            throw "No Store screenshots for $language in $source. Run scripts\New-StoreScreenshots.ps1."
+        }
+
+        $target = Join-Path $Destination "Screenshots\$language"
+        New-Item -ItemType Directory -Path $target -Force | Out-Null
+        $images | Copy-Item -Destination $target
+        $screenshots[$language] = @($images | ForEach-Object { "Screenshots/$language/$($_.Name)" })
+    }
+
     $rows = Import-Csv -LiteralPath $listingSchemaPath -Encoding UTF8
     $lines = [Collections.Generic.List[string]]::new()
     $lines.Add((@("Field", "ID", "Type (Type)", "default") + $languages | ForEach-Object { ConvertTo-CsvValue $_ }) -join ",")
 
     foreach ($row in $rows) {
         $values = foreach ($language in $languages) {
-            Get-ListingValue -Field $row.Field -Text $Texts[$language] -Screenshots $screenshots
+            Get-ListingValue -Field $row.Field -Text $Texts[$language] -Screenshots $screenshots[$language]
         }
 
         $cells = @($row.Field, $row.ID, $row."Type (Type)", "") + @($values)
@@ -205,7 +218,7 @@ function Get-ListingValue {
     param(
         [string]$Field,
         [object]$Text,
-        [IO.FileInfo[]]$Screenshots
+        [string[]]$Screenshots
     )
 
     switch -Regex ($Field) {
@@ -217,7 +230,7 @@ function Get-ListingValue {
         '^StoreLogo300x300$' { return "StoreLogo300x300.png" }
         '^DesktopScreenshot(\d+)$' {
             $index = [int]$Matches[1] - 1
-            return $(if ($index -lt $Screenshots.Count) { "Screenshots/$($Screenshots[$index].Name)" } else { "" })
+            return $(if ($index -lt $Screenshots.Count) { $Screenshots[$index] } else { "" })
         }
         '^SearchTerm(\d+)$' {
             $index = [int]$Matches[1] - 1

@@ -25,7 +25,8 @@ WinGet package.
 |:--|:--|
 | `Package.appxmanifest` | Package manifest. The build fills in `Version` and `ProcessorArchitecture`. |
 | `Assets/` | Package logos, drawn by `scripts/New-StoreAssets.ps1` from the app icon. |
-| `listing/` | Store logo and screenshots for the listing, drawn by the same script. |
+| `listing/` | Store logo for the listing, drawn by the same script. |
+| `listing/Screenshots/<language>/` | Two screenshots per language, drawn by `scripts/New-StoreScreenshots.ps1` from the real panel. |
 | `listing-schema.csv` | Rows of the Partner Center listing import file. |
 
 The listing texts come from `scripts/winget-locales.json`, so the Store and WinGet say the same
@@ -50,8 +51,10 @@ ready. Latin American Spanish is `es-mx` in the Store, which has no `es-419`.
    - `listing\`, the listing import folder (`listingData.csv`, the Store logo, screenshots).
 3. In Partner Center, open the app and start a new submission:
    - **Packages**: remove the previous upload and add the `.msixupload`.
-   - **Store listings**: *Import* the `listing` folder, then write the release notes for this
-     version in each language (the field is left empty on purpose).
+   - **Store listings**: *Import* `listing\listingData.csv` (Partner Center often fails on the
+     whole folder, the CSV alone works), then add the Store logo and the screenshots of each
+     language from `listing\` by hand, and write the release notes for this version in each
+     language (the field is left empty on purpose).
    - Submit. Certification usually takes one to three business days.
 
 ## Test on this PC before uploading
