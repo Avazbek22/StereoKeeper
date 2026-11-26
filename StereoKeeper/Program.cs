@@ -36,11 +36,17 @@ internal static class Program
         InstallCrashLogging();
         InitializeLanguage();
 
+        options = StoreStartup.Resolve(options);
+
         // A second launch (Start menu, desktop shortcut) just opens the flyout of the running app.
+        // A second start at sign-in (both the portable exe and the Store app set to start with
+        // Windows) must not pop the panel open, so it just exits.
         using var instance = SingleInstance.TryAcquire();
         if (instance is null)
         {
-            SingleInstance.SignalRunningInstance();
+            if (!options.StartHidden)
+                SingleInstance.SignalRunningInstance();
+
             return 0;
         }
 

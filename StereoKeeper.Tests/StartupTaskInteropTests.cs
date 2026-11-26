@@ -76,6 +76,24 @@ public sealed class StartupTaskInteropTests
     }
 
     [Fact]
+    public void TheActivationInterfacesMatchWindows()
+    {
+        using var metadata = WinMetadata.Open("Windows.ApplicationModel.winmd");
+        var statics = metadata.GetType("Windows.ApplicationModel", "IAppInstanceStatics");
+        var args = metadata.GetType("Windows.ApplicationModel.Activation", "IActivatedEventArgs");
+        var kinds = metadata.GetEnumValues(metadata.GetType("Windows.ApplicationModel.Activation", "ActivationKind"));
+
+        Assert.Equal(StartupTaskInterop.IidAppInstanceStatics, metadata.GetGuid(statics));
+        Assert.Equal(StartupTaskInterop.AppInstanceGetActivatedEventArgs, metadata.GetSlot(statics, "GetActivatedEventArgs"));
+        Assert.Contains(
+            metadata.GetStaticInterfaces(metadata.GetType("Windows.ApplicationModel", "AppInstance")),
+            name => name == "IAppInstanceStatics");
+        Assert.Equal(StartupTaskInterop.IidActivatedEventArgs, metadata.GetGuid(args));
+        Assert.Equal(StartupTaskInterop.ActivatedEventArgsGetKind, metadata.GetSlot(args, "get_Kind"));
+        Assert.Equal(StartupTaskInterop.ActivationKindStartupTask, kinds["StartupTask"]);
+    }
+
+    [Fact]
     public void WindowsCanCreateTheStartupTaskClass()
         => Assert.True(StartupTaskInterop.CanActivate());
 

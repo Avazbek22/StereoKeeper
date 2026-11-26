@@ -42,6 +42,13 @@ internal static unsafe class StartupTaskInterop
     internal const int AsyncInfoCancel = 9;
     internal const int AsyncOperationGetResults = 8;
 
+    internal const string AppInstanceClassName = "Windows.ApplicationModel.AppInstance";
+    internal static readonly Guid IidAppInstanceStatics = new("9d11e77f-9ea6-47af-a6ec-46784c5ba254");
+    internal static readonly Guid IidActivatedEventArgs = new("cf651713-cd08-4fd8-b697-a281b6544e2e");
+    internal const int AppInstanceGetActivatedEventArgs = 7;
+    internal const int ActivatedEventArgsGetKind = 6;
+    internal const int ActivationKindStartupTask = 1020;
+
     internal const int AsyncStatusStarted = 0;
     internal const int AsyncStatusCompleted = 1;
 
@@ -139,22 +146,65 @@ internal static unsafe class StartupTaskInterop
     }
 
     /// <summary>
+    /// Whether Windows started this process through the package startup task, that is at sign-in.
+    /// Asked from the activation itself, so it holds even if Windows leaves out the startup
+    /// parameters. Works only in a process with package identity; outside one it is false.
+    /// </summary>
+    public static bool WasStartedByStartupTask()
+    {
+        var statics = GetActivationFactory(AppInstanceClassName, IidAppInstanceStatics);
+        try
+        {
+            nint args;
+            Check(((delegate* unmanaged[Stdcall]<nint, nint*, int>)Slot(statics, AppInstanceGetActivatedEventArgs))(statics, &args));
+            if (args == 0)
+                return false;
+
+            try
+            {
+                var iid = IidActivatedEventArgs;
+                Check(Marshal.QueryInterface(args, in iid, out var activated));
+                try
+                {
+                    int kind;
+                    Check(((delegate* unmanaged[Stdcall]<nint, int*, int>)Slot(activated, ActivatedEventArgsGetKind))(activated, &kind));
+                    return kind == ActivationKindStartupTask;
+                }
+                finally
+                {
+                    Marshal.Release(activated);
+                }
+            }
+            finally
+            {
+                Marshal.Release(args);
+            }
+        }
+        finally
+        {
+            Marshal.Release(statics);
+        }
+    }
+
+    /// <summary>
     /// Whether Windows can create the startup task class at all; true on every supported Windows,
     /// with or without a package. For the tests, which run outside a package.
     /// </summary>
     internal static bool CanActivate()
     {
-        var factory = GetActivationFactory();
+        var factory = GetActivationFactory(ClassName, IidStartupTaskStatics);
         Marshal.Release(factory);
         return factory != 0;
     }
 
-    private static nint GetActivationFactory()
+    private static nint GetActivationFactory() => GetActivationFactory(ClassName, IidStartupTaskStatics);
+
+    private static nint GetActivationFactory(string className, Guid interfaceId)
     {
-        var name = CreateString(ClassName);
+        var name = CreateString(className);
         try
         {
-            var iid = IidStartupTaskStatics;
+            var iid = interfaceId;
             Check(RoGetActivationFactory(name, &iid, out var factory));
             return factory;
         }
