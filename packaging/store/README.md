@@ -1,13 +1,19 @@
 # Microsoft Store package
 
 The Store app is the same exe as the GitHub release, wrapped in an MSIX package. At run time it
-notices the package (`App/PackageIdentity.cs`) and differs in two places only:
+notices the package (`App/PackageIdentity.cs`) and differs in these places only:
 
 - **Start with Windows** switches the package startup task instead of the `Run` registry key,
   because Windows keeps a packaged app's registry writes private (`Gui/Services/StartupTaskAutostart.cs`).
+  At sign-in the app waits in the tray: the task passes `--tray`, and because Windows does not
+  document that it always does, the app also asks Windows whether the startup task started it
+  (`App/StoreStartup.cs`). The WinRT calls behind both are checked against the Windows metadata
+  by `StartupTaskInteropTests`.
 - Paths shown to the user (the log in a startup error and in the diagnostics) point into the
   package folder, `%LocalAppData%\Packages\<package family name>\LocalCache`, where Windows
   redirects the app's `%AppData%` and `%LocalAppData%` writes.
+- The help says that Windows deletes the settings and the log on uninstall, instead of naming
+  the folders to delete by hand (`gui.help.details.storeBody`).
 
 Everything else works as in the portable exe. Bring back stereo and Always stereo start the
 packaged exe as the elevated worker through the usual UAC prompt; no `allowElevation`
@@ -28,7 +34,8 @@ thing in all 30 languages. Latin American Spanish is `es-mx` in the Store, which
 ## Every release
 
 1. Bump the version in `StereoKeeper/StereoKeeper.csproj` and `App/AppInfo.cs` as usual. Store
-   versions must end in `.0`; `3.1` becomes `3.1.0.0`.
+   versions must end in `.0`; `3.1` becomes `3.1.0.0`. Each new package needs a higher version
+   than the packages already in the Store.
 2. Build the submission from a clean, pushed `master`:
 
    ```powershell
