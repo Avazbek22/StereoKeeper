@@ -82,14 +82,14 @@ internal static class Program
                 : new ElevatedOperationRunner(Environment.ProcessPath ?? AppInfo.AppName + ".exe");
 
             new StartupRecovery(new MessageBoxDialog(), runner, engine.GetServiceSnapshots)
-                .Report(exception, CrashLog.FilePath);
+                .Report(exception, CrashLog.DisplayPath);
         }
         catch (Exception failure) when (failure is not OutOfMemoryException)
         {
             CrashLog.Write("The startup error could not be explained", failure);
             _ = MessageBoxW(
                 IntPtr.Zero,
-                $"{exception.Message}\n\n{CrashLog.FilePath}",
+                $"{exception.Message}\n\n{CrashLog.DisplayPath}",
                 "StereoKeeper could not start",
                 MbOk | MbIconError | MbSetForeground);
         }

@@ -22,6 +22,12 @@ public static class CrashLog
         "logs",
         "app.log");
 
+    /// <summary>
+    /// The path to show the user. The Store build writes the log into its package folder, so the
+    /// usual path would lead nowhere in File Explorer.
+    /// </summary>
+    public static string DisplayPath => _pathOverride ?? PackageIdentity.ToRealPath(FilePath);
+
     /// <summary>Redirects the log (tests); <c>null</c> restores the default location.</summary>
     internal static void UsePath(string? path)
     {

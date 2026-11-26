@@ -15,6 +15,7 @@ public sealed class DiagnosticsReportTests
                 ".NET 10.0.0, X64 process on X64",
                 IsAdministrator: false,
                 "ru-RU",
+                "portable exe",
                 new DateTimeOffset(2026, 11, 14, 15, 4, 12, TimeSpan.FromHours(3)),
                 "Status\nBluetooth Audio Gateway (HFP): running, manual\n",
                 @"C:\Users\gamer\AppData\Local\StereoKeeper\logs\app.log",
@@ -27,6 +28,7 @@ public sealed class DiagnosticsReportTests
         Assert.Contains("Runtime: .NET 10.0.0, X64 process on X64", text, StringComparison.Ordinal);
         Assert.Contains("Administrator: no", text, StringComparison.Ordinal);
         Assert.Contains("Language: ru-RU", text, StringComparison.Ordinal);
+        Assert.Contains("Package: portable exe", text, StringComparison.Ordinal);
         Assert.Contains("Bluetooth Audio Gateway (HFP): running, manual", text, StringComparison.Ordinal);
         Assert.Contains(@"Log: %USERPROFILE%\AppData\Local\StereoKeeper\logs\app.log", text, StringComparison.Ordinal);
         Assert.Contains(@"at Copy() in %USERPROFILE%\src\x.cs", text, StringComparison.Ordinal);
@@ -37,7 +39,7 @@ public sealed class DiagnosticsReportTests
     public void EmptyLogIsStatedPlainly()
     {
         var text = DiagnosticsReport.Format(
-            new DiagnosticsInput("Windows 10", ".NET 10", true, "en", DateTimeOffset.UnixEpoch, "Status", "app.log", []),
+            new DiagnosticsInput("Windows 10", ".NET 10", true, "en", "portable exe", DateTimeOffset.UnixEpoch, "Status", "app.log", []),
             userProfile: null);
 
         Assert.Contains("Administrator: yes", text, StringComparison.Ordinal);
@@ -73,6 +75,7 @@ public sealed class DiagnosticsReportTests
         Assert.StartsWith(AppInfo.AppDisplayName, text, StringComparison.Ordinal);
         Assert.Contains("Windows: ", text, StringComparison.Ordinal);
         Assert.Contains("Runtime: .NET", text, StringComparison.Ordinal);
+        Assert.Contains("Package: portable exe", text, StringComparison.Ordinal);
         Assert.Contains("Log: ", text, StringComparison.Ordinal);
     }
 }
