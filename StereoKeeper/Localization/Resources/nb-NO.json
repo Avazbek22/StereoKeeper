@@ -274,6 +274,7 @@
   "gui.help.safety.body": "Å vise statusen krever ingen spesielle rettigheter. For «Få tilbake stereo» og «Alltid stereo» ber Windows om tillatelse hver gang.",
   "gui.help.details.title": "For de nysgjerrige",
   "gui.help.details.body": "Samtalemodus er Bluetooth-profilen HFP, stereo er A2DP. Bluetooth Classic kan ikke gjøre begge samtidig. Appen styrer Windows-tjenestene BTAGService og BthHFSrv. Etter avinstallering er det bare innstillingene i %AppData%\\StereoKeeper og loggen i %LocalAppData%\\StereoKeeper som blir igjen. De påvirker ikke lyden, og du kan slette disse mappene.",
+  "gui.help.details.storeBody": "Samtalemodus er Bluetooth-profilen HFP, stereo er A2DP. Bluetooth Classic kan ikke gjøre begge samtidig. Appen styrer Windows-tjenestene BTAGService og BthHFSrv. Innstillingene og loggen lagres i appens egen mappe, og Windows sletter dem sammen med appen.",
   "gui.tray.open": "Åpne StereoKeeper",
   "gui.tray.exit": "Avslutt",
   "gui.tooltip.stereo": "stereo",

@@ -9,6 +9,32 @@ namespace StereoKeeper.Gui.ViewModels;
 /// </summary>
 public sealed class UiText
 {
+    public UiText()
+        : this(PackageIdentity.IsPackaged)
+    {
+    }
+
+    /// <param name="isStoreApp">
+    /// The Microsoft Store build: Windows keeps its settings and log in the package folder and
+    /// deletes them on uninstall, so the help must not tell the user to delete them by hand.
+    /// </param>
+    internal UiText(bool isStoreApp)
+    {
+        HelpSections =
+        [
+            new(Text.Get("gui.help.why.title"), Text.Get("gui.help.why.body")),
+            new(Text.Get("gui.help.fix.title"), Text.Get("gui.help.fix.body")),
+            new(Text.Get("gui.help.hard.title"), Text.Get("gui.help.hard.body")),
+            new(Text.Get("gui.help.mic.title"), Text.Get("gui.help.mic.body")),
+            new(Text.Get("gui.help.undo.title"), Text.Get("gui.help.undo.body")),
+            new(Text.Get("gui.help.safety.title"), Text.Get("gui.help.safety.body")),
+            new(
+                Text.Get("gui.help.details.title"),
+                Text.Get(isStoreApp ? "gui.help.details.storeBody" : "gui.help.details.body"),
+                IsAside: true)
+        ];
+    }
+
     public string AppTitle { get; } = "StereoKeeper";
     public string Settings { get; } = Text.Get("gui.settings");
     public string Back { get; } = Text.Get("gui.back");
@@ -47,16 +73,7 @@ public sealed class UiText
     public string Quit { get; } = Text.Get("gui.settings.quit");
 
     public string HelpTitle { get; } = Text.Get("gui.help.title");
-    public IReadOnlyList<HelpSection> HelpSections { get; } =
-    [
-        new(Text.Get("gui.help.why.title"), Text.Get("gui.help.why.body")),
-        new(Text.Get("gui.help.fix.title"), Text.Get("gui.help.fix.body")),
-        new(Text.Get("gui.help.hard.title"), Text.Get("gui.help.hard.body")),
-        new(Text.Get("gui.help.mic.title"), Text.Get("gui.help.mic.body")),
-        new(Text.Get("gui.help.undo.title"), Text.Get("gui.help.undo.body")),
-        new(Text.Get("gui.help.safety.title"), Text.Get("gui.help.safety.body")),
-        new(Text.Get("gui.help.details.title"), Text.Get("gui.help.details.body"), IsAside: true)
-    ];
+    public IReadOnlyList<HelpSection> HelpSections { get; }
 }
 
 /// <summary>A help card; an aside (technical details) is drawn quieter than the main answers.</summary>

@@ -274,6 +274,7 @@
   "gui.help.safety.body": "Afficher l'état ne demande aucun droit particulier. Pour « Rétablir la stéréo » et « Toujours stéréo », Windows demande l'autorisation à chaque fois.",
   "gui.help.details.title": "Pour les curieux",
   "gui.help.details.body": "Le mode appel est le profil Bluetooth HFP, la stéréo est l'A2DP. Le Bluetooth Classic ne peut pas faire les deux en même temps. L'application gère les services Windows BTAGService et BthHFSrv. Après la désinstallation, il ne reste que ses réglages dans %AppData%\\StereoKeeper et son journal dans %LocalAppData%\\StereoKeeper. Ils n'affectent pas le son, et vous pouvez supprimer ces dossiers.",
+  "gui.help.details.storeBody": "Le mode appel est le profil Bluetooth HFP, la stéréo est l'A2DP. Le Bluetooth Classic ne peut pas faire les deux en même temps. L'application gère les services Windows BTAGService et BthHFSrv. Ses réglages et son journal sont conservés dans le dossier propre de l'application, et Windows les supprime avec elle.",
   "gui.tray.open": "Ouvrir StereoKeeper",
   "gui.tray.exit": "Quitter",
   "gui.tooltip.stereo": "stéréo",

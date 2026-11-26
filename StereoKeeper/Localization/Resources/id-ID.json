@@ -274,6 +274,7 @@
   "gui.help.safety.body": "Menampilkan status tidak memerlukan hak khusus. Untuk “Kembalikan stereo” dan “Selalu stereo”, Windows meminta izin setiap kali.",
   "gui.help.details.title": "Untuk yang penasaran",
   "gui.help.details.body": "Mode panggilan adalah profil Bluetooth HFP, stereo adalah A2DP. Bluetooth Classic tidak bisa keduanya sekaligus. Aplikasi ini mengelola layanan Windows BTAGService dan BthHFSrv. Setelah dicopot, yang tersisa hanya pengaturannya di %AppData%\\StereoKeeper dan lognya di %LocalAppData%\\StereoKeeper. Keduanya tidak memengaruhi suara, dan folder ini boleh dihapus.",
+  "gui.help.details.storeBody": "Mode panggilan adalah profil Bluetooth HFP, stereo adalah A2DP. Bluetooth Classic tidak bisa keduanya sekaligus. Aplikasi ini mengelola layanan Windows BTAGService dan BthHFSrv. Pengaturan dan lognya disimpan di folder milik aplikasi sendiri, dan Windows menghapusnya bersama aplikasi.",
   "gui.tray.open": "Buka StereoKeeper",
   "gui.tray.exit": "Keluar",
   "gui.tooltip.stereo": "stereo",

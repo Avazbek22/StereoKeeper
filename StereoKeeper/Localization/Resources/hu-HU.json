@@ -274,6 +274,7 @@
   "gui.help.safety.body": "Az állapot megjelenítéséhez nincs szükség különleges jogokra. A „Sztereó visszahozása” és a „Mindig sztereó” előtt a Windows minden alkalommal engedélyt kér.",
   "gui.help.details.title": "Kíváncsiaknak",
   "gui.help.details.body": "A hívásmód a Bluetooth HFP profil, a sztereó az A2DP. A Bluetooth Classic nem tudja egyszerre mindkettőt. Az alkalmazás a BTAGService és a BthHFSrv Windows-szolgáltatásokat kezeli. Az eltávolítás után csak a beállításai maradnak meg a %AppData%\\StereoKeeper mappában és a naplója a %LocalAppData%\\StereoKeeper mappában. Ezek nem befolyásolják a hangot, és ezeket a mappákat törölheted.",
+  "gui.help.details.storeBody": "A hívásmód a Bluetooth HFP profil, a sztereó az A2DP. A Bluetooth Classic nem tudja egyszerre mindkettőt. Az alkalmazás a BTAGService és a BthHFSrv Windows-szolgáltatásokat kezeli. A beállításai és a naplója az alkalmazás saját mappájában vannak, és a Windows az alkalmazással együtt törli őket.",
   "gui.tray.open": "A StereoKeeper megnyitása",
   "gui.tray.exit": "Kilépés",
   "gui.tooltip.stereo": "sztereó",

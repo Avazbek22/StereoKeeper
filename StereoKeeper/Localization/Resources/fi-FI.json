@@ -274,6 +274,7 @@
   "gui.help.safety.body": "Tilan näyttäminen ei vaadi erityisiä oikeuksia. ”Palauta stereo” ja ”Aina stereo” -toimintoihin Windows kysyy luvan joka kerta.",
   "gui.help.details.title": "Uteliaille",
   "gui.help.details.body": "Puhelutila on Bluetoothin HFP-profiili, stereo on A2DP. Bluetooth Classic ei pysty molempiin samaan aikaan. Sovellus hallitsee Windowsin palveluja BTAGService ja BthHFSrv. Poiston jälkeen jäljelle jäävät vain sovelluksen asetukset kansiossa %AppData%\\StereoKeeper ja loki kansiossa %LocalAppData%\\StereoKeeper. Ne eivät vaikuta ääneen, ja voit poistaa nämä kansiot.",
+  "gui.help.details.storeBody": "Puhelutila on Bluetoothin HFP-profiili, stereo on A2DP. Bluetooth Classic ei pysty molempiin samaan aikaan. Sovellus hallitsee Windowsin palveluja BTAGService ja BthHFSrv. Sovelluksen asetukset ja loki tallennetaan sovelluksen omaan kansioon, ja Windows poistaa ne sovelluksen mukana.",
   "gui.tray.open": "Avaa StereoKeeper",
   "gui.tray.exit": "Sulje",
   "gui.tooltip.stereo": "stereo",

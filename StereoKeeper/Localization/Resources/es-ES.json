@@ -274,6 +274,7 @@
   "gui.help.safety.body": "Mostrar el estado no requiere permisos especiales. Para «Recuperar el estéreo» y «Siempre estéreo», Windows pide permiso cada vez.",
   "gui.help.details.title": "Para curiosos",
   "gui.help.details.body": "El modo llamada es el perfil Bluetooth HFP y el estéreo es A2DP. Bluetooth Classic no puede usar los dos a la vez. La app gestiona los servicios de Windows BTAGService y BthHFSrv. Tras desinstalarla, solo quedan sus ajustes en %AppData%\\StereoKeeper y su registro en %LocalAppData%\\StereoKeeper. No afectan al sonido y puedes borrar esas carpetas.",
+  "gui.help.details.storeBody": "El modo llamada es el perfil Bluetooth HFP y el estéreo es A2DP. Bluetooth Classic no puede usar los dos a la vez. La app gestiona los servicios de Windows BTAGService y BthHFSrv. Sus ajustes y su registro se guardan en la carpeta propia de la app, y Windows los elimina junto con ella.",
   "gui.tray.open": "Abrir StereoKeeper",
   "gui.tray.exit": "Salir",
   "gui.tooltip.stereo": "estéreo",

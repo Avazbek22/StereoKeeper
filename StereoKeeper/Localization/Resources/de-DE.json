@@ -274,6 +274,7 @@
   "gui.help.safety.body": "Die Statusanzeige braucht keine besonderen Rechte. Für „Stereo zurückholen“ und „Immer Stereo“ fragt Windows jedes Mal nach Erlaubnis.",
   "gui.help.details.title": "Für Neugierige",
   "gui.help.details.body": "Der Anrufmodus ist das Bluetooth-Profil HFP, Stereo ist A2DP. Bluetooth Classic kann nicht beides gleichzeitig. Die App verwaltet die Windows-Dienste BTAGService und BthHFSrv. Nach der Deinstallation bleiben nur ihre Einstellungen in %AppData%\\StereoKeeper und ihr Protokoll in %LocalAppData%\\StereoKeeper zurück. Sie haben keinen Einfluss auf den Sound, und Sie können diese Ordner löschen.",
+  "gui.help.details.storeBody": "Der Anrufmodus ist das Bluetooth-Profil HFP, Stereo ist A2DP. Bluetooth Classic kann nicht beides gleichzeitig. Die App verwaltet die Windows-Dienste BTAGService und BthHFSrv. Ihre Einstellungen und ihr Protokoll liegen im eigenen Ordner der App, und Windows löscht sie zusammen mit der App.",
   "gui.tray.open": "StereoKeeper öffnen",
   "gui.tray.exit": "Beenden",
   "gui.tooltip.stereo": "Stereo",

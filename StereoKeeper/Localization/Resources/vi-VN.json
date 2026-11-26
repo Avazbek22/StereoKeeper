@@ -274,6 +274,7 @@
   "gui.help.safety.body": "Hiển thị trạng thái không cần quyền đặc biệt. Với “Khôi phục stereo” và “Luôn stereo”, Windows hỏi quyền mỗi lần.",
   "gui.help.details.title": "Dành cho người tò mò",
   "gui.help.details.body": "Chế độ cuộc gọi là hồ sơ Bluetooth HFP, còn stereo là A2DP. Bluetooth Classic không thể dùng cả hai cùng lúc. Ứng dụng quản lý các dịch vụ Windows BTAGService và BthHFSrv. Sau khi gỡ cài đặt, chỉ còn cài đặt của nó trong %AppData%\\StereoKeeper và nhật ký trong %LocalAppData%\\StereoKeeper. Chúng không ảnh hưởng đến âm thanh và bạn có thể xóa các thư mục này.",
+  "gui.help.details.storeBody": "Chế độ cuộc gọi là hồ sơ Bluetooth HFP, còn stereo là A2DP. Bluetooth Classic không thể dùng cả hai cùng lúc. Ứng dụng quản lý các dịch vụ Windows BTAGService và BthHFSrv. Cài đặt và nhật ký của nó được lưu trong thư mục riêng của ứng dụng, và Windows sẽ xóa chúng cùng với ứng dụng.",
   "gui.tray.open": "Mở StereoKeeper",
   "gui.tray.exit": "Thoát",
   "gui.tooltip.stereo": "stereo",

@@ -274,6 +274,7 @@
   "gui.help.safety.body": "Afișarea stării nu necesită drepturi speciale. Pentru „Readu stereo” și „Mereu stereo”, Windows cere permisiunea de fiecare dată.",
   "gui.help.details.title": "Pentru curioși",
   "gui.help.details.body": "Modul apel este profilul Bluetooth HFP, stereo este A2DP. Bluetooth Classic nu le poate face pe amândouă deodată. Aplicația gestionează serviciile Windows BTAGService și BthHFSrv. După dezinstalare rămân doar setările ei în %AppData%\\StereoKeeper și jurnalul în %LocalAppData%\\StereoKeeper. Ele nu afectează sunetul și poți șterge aceste foldere.",
+  "gui.help.details.storeBody": "Modul apel este profilul Bluetooth HFP, stereo este A2DP. Bluetooth Classic nu le poate face pe amândouă deodată. Aplicația gestionează serviciile Windows BTAGService și BthHFSrv. Setările și jurnalul ei sunt păstrate în folderul propriu al aplicației, iar Windows le șterge odată cu aplicația.",
   "gui.tray.open": "Deschide StereoKeeper",
   "gui.tray.exit": "Ieșire",
   "gui.tooltip.stereo": "stereo",

@@ -274,6 +274,7 @@
   "gui.help.safety.body": "状態の表示に特別な権限は要りません。「ステレオに戻す」と「常にステレオ」では、そのたびに Windows が許可を求めます。",
   "gui.help.details.title": "くわしく知りたい方へ",
   "gui.help.details.body": "通話モードは Bluetooth の HFP プロファイル、ステレオは A2DP です。Bluetooth Classic では両方を同時には使えません。アプリは Windows のサービス BTAGService と BthHFSrv を管理します。アンインストール後に残るのは、%AppData%\\StereoKeeper にある設定と、%LocalAppData%\\StereoKeeper にあるログだけです。音には影響しないので、これらのフォルダーは削除して構いません。",
+  "gui.help.details.storeBody": "通話モードは Bluetooth の HFP プロファイル、ステレオは A2DP です。Bluetooth Classic では両方を同時には使えません。アプリは Windows のサービス BTAGService と BthHFSrv を管理します。設定とログはアプリ専用のフォルダーに保存され、アプリと一緒に Windows が削除します。",
   "gui.tray.open": "StereoKeeper を開く",
   "gui.tray.exit": "終了",
   "gui.tooltip.stereo": "ステレオ",

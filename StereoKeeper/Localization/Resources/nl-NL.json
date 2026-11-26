@@ -274,6 +274,7 @@
   "gui.help.safety.body": "Voor het tonen van de status zijn geen speciale rechten nodig. Voor “Stereo herstellen” en “Altijd stereo” vraagt Windows elke keer om toestemming.",
   "gui.help.details.title": "Voor de nieuwsgierigen",
   "gui.help.details.body": "De gespreksmodus is het Bluetooth-profiel HFP, stereo is A2DP. Bluetooth Classic kan niet allebei tegelijk. De app beheert de Windows-services BTAGService en BthHFSrv. Na het verwijderen blijven alleen de instellingen in %AppData%\\StereoKeeper en het logboek in %LocalAppData%\\StereoKeeper over. Ze hebben geen invloed op het geluid en je kunt deze mappen verwijderen.",
+  "gui.help.details.storeBody": "De gespreksmodus is het Bluetooth-profiel HFP, stereo is A2DP. Bluetooth Classic kan niet allebei tegelijk. De app beheert de Windows-services BTAGService en BthHFSrv. De instellingen en het logboek staan in de eigen map van de app en Windows verwijdert ze samen met de app.",
   "gui.tray.open": "StereoKeeper openen",
   "gui.tray.exit": "Afsluiten",
   "gui.tooltip.stereo": "stereo",

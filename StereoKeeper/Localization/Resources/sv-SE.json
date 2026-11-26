@@ -274,6 +274,7 @@
   "gui.help.safety.body": "Att visa statusen kräver inga särskilda behörigheter. För ”Återställ stereo” och ”Alltid stereo” frågar Windows om tillstånd varje gång.",
   "gui.help.details.title": "För nyfikna",
   "gui.help.details.body": "Samtalsläge är Bluetooth-profilen HFP, stereo är A2DP. Klassisk Bluetooth kan inte göra båda samtidigt. Appen hanterar Windows-tjänsterna BTAGService och BthHFSrv. Efter avinstallation finns bara dess inställningar i %AppData%\\StereoKeeper och dess logg i %LocalAppData%\\StereoKeeper kvar. De påverkar inte ljudet och du kan radera mapparna.",
+  "gui.help.details.storeBody": "Samtalsläge är Bluetooth-profilen HFP, stereo är A2DP. Klassisk Bluetooth kan inte göra båda samtidigt. Appen hanterar Windows-tjänsterna BTAGService och BthHFSrv. Dess inställningar och logg sparas i appens egen mapp, och Windows raderar dem tillsammans med appen.",
   "gui.tray.open": "Öppna StereoKeeper",
   "gui.tray.exit": "Avsluta",
   "gui.tooltip.stereo": "stereo",

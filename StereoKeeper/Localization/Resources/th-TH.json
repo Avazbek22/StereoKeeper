@@ -274,6 +274,7 @@
   "gui.help.safety.body": "การแสดงสถานะไม่ต้องใช้สิทธิ์พิเศษ ส่วน “คืนเสียงสเตอริโอ” และ “สเตอริโอตลอด” Windows จะขออนุญาตทุกครั้ง",
   "gui.help.details.title": "สำหรับคนช่างสงสัย",
   "gui.help.details.body": "โหมดโทรคือโปรไฟล์บลูทูธ HFP ส่วนสเตอริโอคือ A2DP บลูทูธคลาสสิกทำสองอย่างพร้อมกันไม่ได้ แอปจัดการบริการ Windows ชื่อ BTAGService และ BthHFSrv หลังถอนการติดตั้งจะเหลือเพียงการตั้งค่าใน %AppData%\\StereoKeeper และบันทึกใน %LocalAppData%\\StereoKeeper ซึ่งไม่กระทบเสียง และคุณลบโฟลเดอร์เหล่านี้ได้",
+  "gui.help.details.storeBody": "โหมดโทรคือโปรไฟล์บลูทูธ HFP ส่วนสเตอริโอคือ A2DP บลูทูธคลาสสิกทำสองอย่างพร้อมกันไม่ได้ แอปจัดการบริการ Windows ชื่อ BTAGService และ BthHFSrv การตั้งค่าและบันทึกจะเก็บไว้ในโฟลเดอร์ของแอปเอง และ Windows จะลบทั้งหมดพร้อมกับแอป",
   "gui.tray.open": "เปิด StereoKeeper",
   "gui.tray.exit": "ออก",
   "gui.tooltip.stereo": "สเตอริโอ",

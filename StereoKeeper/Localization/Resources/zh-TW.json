@@ -274,6 +274,7 @@
   "gui.help.safety.body": "顯示狀態不需要特殊權限。執行「恢復立體聲」和「永遠立體聲」時，Windows 每次都會要求權限。",
   "gui.help.details.title": "給好奇的人",
   "gui.help.details.body": "通話模式是藍牙 HFP 設定檔，立體聲是 A2DP。傳統藍牙無法同時使用兩者。本應用程式管理 Windows 服務 BTAGService 和 BthHFSrv。解除安裝後，只會留下 %AppData%\\StereoKeeper 中的設定和 %LocalAppData%\\StereoKeeper 中的記錄檔。它們不影響聲音，你可以刪除這些資料夾。",
+  "gui.help.details.storeBody": "通話模式是藍牙 HFP 設定檔，立體聲是 A2DP。傳統藍牙無法同時使用兩者。本應用程式管理 Windows 服務 BTAGService 和 BthHFSrv。其設定和記錄檔儲存在應用程式自己的資料夾中，Windows 會隨應用程式一併將其刪除。",
   "gui.tray.open": "開啟 StereoKeeper",
   "gui.tray.exit": "結束",
   "gui.tooltip.stereo": "立體聲",

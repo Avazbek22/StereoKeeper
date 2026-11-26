@@ -274,6 +274,7 @@
   "gui.help.safety.body": "Zobrazení stavu nevyžaduje žádná zvláštní oprávnění. Pro „Vrátit stereo“ a „Vždy stereo“ Windows žádá o povolení pokaždé.",
   "gui.help.details.title": "Pro zvídavé",
   "gui.help.details.body": "Režim hovoru je profil Bluetooth HFP, stereo je A2DP. Bluetooth Classic nezvládne obojí najednou. Aplikace spravuje služby Windows BTAGService a BthHFSrv. Po odinstalaci zůstane jen její nastavení v %AppData%\\StereoKeeper a protokol v %LocalAppData%\\StereoKeeper. Na zvuk to nemá vliv a tyto složky můžete smazat.",
+  "gui.help.details.storeBody": "Režim hovoru je profil Bluetooth HFP, stereo je A2DP. Bluetooth Classic nezvládne obojí najednou. Aplikace spravuje služby Windows BTAGService a BthHFSrv. Její nastavení a protokol jsou uloženy ve vlastní složce aplikace a Windows je smaže spolu s ní.",
   "gui.tray.open": "Otevřít StereoKeeper",
   "gui.tray.exit": "Ukončit",
   "gui.tooltip.stereo": "stereo",
