@@ -172,7 +172,11 @@ try {
         $medium = Get-ScaledSize 150 $scale
         $store = Get-ScaledSize 50 $scale
         Save-Image "Square44x44Logo.scale-$scale.png" $small $small
-        Save-Image "Square150x150Logo.scale-$scale.png" $medium $medium 0.8
+        # At 400% the tile is 600 px and its PNG passes the Store's 200 KB limit; Windows scales
+        # the 200% tile up on the rare 400% display instead.
+        if ($scale -le 200) {
+            Save-Image "Square150x150Logo.scale-$scale.png" $medium $medium 0.8
+        }
         Save-Image "StoreLogo.scale-$scale.png" $store $store 0.9
     }
 
@@ -197,6 +201,10 @@ finally {
 }
 
 $packageImages = @(Get-ChildItem -LiteralPath $OutputDirectory -Filter "*.png")
+$tooLarge = @($packageImages | Where-Object { $_.Length -gt 200KB })
+if ($tooLarge.Count -gt 0) {
+    throw "The Store rejects package images over 200 KB: $($tooLarge.Name -join ', ')."
+}
 $listingImages = @(Get-ChildItem -LiteralPath $ListingDirectory -Filter "*.png" -Recurse)
 Write-Host "Wrote $($packageImages.Count) package images to $OutputDirectory" -ForegroundColor Green
 Write-Host "Wrote $($listingImages.Count) listing images to $ListingDirectory" -ForegroundColor Green

@@ -87,8 +87,13 @@ public sealed class StorePackageTests
         {
             var name = Path.GetFileNameWithoutExtension(logo);
             var files = Directory.GetFiles(Path.Combine(StoreRoot, "Assets"), name + ".scale-*.png");
-            Assert.Equal(5, files.Length);
+            Assert.Contains(files, file => file.EndsWith(name + ".scale-100.png", StringComparison.Ordinal));
+            Assert.Contains(files, file => file.EndsWith(name + ".scale-200.png", StringComparison.Ordinal));
         }
+
+        Assert.All(
+            Directory.GetFiles(Path.Combine(StoreRoot, "Assets")),
+            file => Assert.True(new FileInfo(file).Length <= 200 * 1024, $"{Path.GetFileName(file)} is over the Store limit of 200 KB."));
 
         Assert.Equal(15 * 3, Directory.GetFiles(Path.Combine(StoreRoot, "Assets"), "Square44x44Logo.targetsize-*.png").Length);
     }
