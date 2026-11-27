@@ -25,8 +25,13 @@ public sealed partial class StoreListingTextsTests
 
     private static readonly string[] Keys = ["shortDescription", "description", "features", "searchTerms", "screenshotCaptions"];
 
-    // Facts every language must keep: the product, the systems, and the numbers.
-    private static readonly string[] Facts = ["StereoKeeper", "Windows 11", "Windows 10", "2004", "25", "30", "MIT", "GitHub", "A2DP", "HFP"];
+    // Facts every language must keep: the product, the systems, the numbers, and the games and apps
+    // people search the problem with.
+    private static readonly string[] Facts =
+    [
+        "StereoKeeper", "Windows 11", "Windows 10", "2004", "25", "30", "MIT", "GitHub", "A2DP", "HFP",
+        "Call of Duty", "Warzone", "OBS Studio", "Discord",
+    ];
 
     private static readonly string StoreRoot = Path.Combine(FindRepositoryRoot(), "packaging", "store");
     private static readonly string TextsDirectory = Path.Combine(StoreRoot, "texts");
@@ -132,6 +137,15 @@ public sealed partial class StoreListingTextsTests
 
     [Theory]
     [MemberData(nameof(Languages))]
+    public void TheSearchTermsNameNoOtherProduct(string language)
+    {
+        // Store policy 10.1.3: search terms must not use the names of other apps, games or brands.
+        // The description may name them; the search terms may not.
+        Assert.All(Read(language).SearchTerms, term => Assert.DoesNotMatch(OtherProduct(), term));
+    }
+
+    [Theory]
+    [MemberData(nameof(Languages))]
     public void EveryScreenshotHasACaption(string language)
     {
         var captions = Read(language).ScreenshotCaptions;
@@ -178,6 +192,9 @@ public sealed partial class StoreListingTextsTests
 
     [GeneratedRegex(@"[\s\-]+")]
     private static partial Regex WordSeparator();
+
+    [GeneratedRegex(@"\b(call of duty|cod|warzone|black ops|modern warfare|activision|helldivers|counter-strike|cs2|roblox|discord|obs|teams|zoom|google meet|airpods|apple|sony|bose|galaxy|samsung|jbl|soundcore|jabra|sennheiser|beats)\b", RegexOptions.IgnoreCase)]
+    private static partial Regex OtherProduct();
 
     private sealed record ListingTexts(
         string ShortDescription,
