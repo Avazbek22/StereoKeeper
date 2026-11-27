@@ -28,11 +28,15 @@ WinGet package.
 | `listing/` | Store logo for the listing, drawn by the same script. |
 | `listing/Screenshots/<language>/` | Two screenshots per language, drawn by `scripts/New-StoreScreenshots.ps1` from the real panel. |
 | `listing-schema.csv` | Rows of the Partner Center listing import file. |
+| `texts/<language>.json` | Listing texts: descriptions, product features, search terms, captions. |
 
-The listing texts come from `scripts/winget-locales.json`, so the Store and WinGet say the same
-thing. The Store lists the app in the languages of the `Resources` element of
-`Package.appxmanifest`: all 30 interface languages, en-us first. Latin American Spanish is
-`es-mx` in the Store, which has no `es-419`.
+The listing texts live in `texts/<language>.json`, one file per Store language: the short and
+the full description, the 20 product features, the 7 search terms, and the screenshot captions.
+`Publish-Store.ps1` and `StoreListingTextsTests` check them against the Partner Center limits, and
+the tests also check that every language keeps the facts of the English text. The package
+description that Windows shows comes from `scripts/winget-locales.json`. The Store lists the app
+in the languages of the `Resources` element of `Package.appxmanifest`: all 30 interface
+languages, en-us first. Latin American Spanish is `es-mx` in the Store, which has no `es-419`.
 
 ## Every release
 
@@ -51,9 +55,10 @@ thing. The Store lists the app in the languages of the `Resources` element of
    - `listingData-texts.csv`, the same listing without the image paths.
 3. In Partner Center, open the app and start a new submission:
    - **Packages**: remove the previous upload and add the `.msixupload`.
-   - **Store listings**: *Import* `listingData-texts.csv` (Partner Center often fails on the
-     whole `listing` folder, and on the image paths of `listing\listingData.csv` imported alone),
-     then add the Store logo and the screenshots of each language from `listing\` by hand, and
+   - **Store listings**: *Import* `listingData-texts.csv`. Partner Center often fails on the whole
+     `listing` folder and on the image paths of `listing\listingData.csv` imported alone; the
+     texts file has no image rows, so it never touches images that are already uploaded. Add the
+     Store logo and the screenshots of each language from `listing\` by hand the first time, and
      write the release notes for this version in each language (the field is left empty on
      purpose).
    - Submit. Certification usually takes one to three business days.

@@ -1,0 +1,39 @@
+{
+  "shortDescription": "Låter dina Bluetooth-hörlurar plötsligt dova, i mono eller som ett telefonsamtal i Windows 11 eller Windows 10? Då har Windows växlat dem från A2DP-stereo till samtalsprofilen Hands-Free (HFP), eftersom ett spel, Discord, Microsoft Teams, Zoom eller en webbläsare har slagit på headsetets mikrofon. StereoKeeper är en gratis app i systemfältet som visar när hörlurarna hamnar i samtalsläge, pekar ut appen som tog mikrofonen och ger tillbaka stereo i hög kvalitet med ett klick när Windows låter hörlurarna sitta fast där. ”Alltid stereo” stänger av samtalsläget för gott om du har en separat mikrofon, och när du slår av det är Windows precis som förut. Fungerar med Bluetooth-hörlurar, hörsnäckor och gamingheadset. Inga annonser, inget konto, ingen datainsamling, 30 språk, öppen källkod.",
+  "description": "StereoKeeper fixar Bluetooth-hörlurar som plötsligt låter dova, burkiga, i mono eller som ett telefonsamtal i Windows 11 och Windows 10. Om musiken, spelen eller filmerna tappade bas och stereo i samma stund som du gick med i en röstchatt, eller om ljudet förblev dåligt även efter samtalet, är den här appen för dig. StereoKeeper (tidigare BluetoothHandsFreeToggle) finns i systemfältet, visar hörlurarnas verkliga tillstånd med en blick och ger tillbaka stereoljud i hög kvalitet med ett klick.\n\nDärför låter Bluetooth-hörlurar dåligt på en dator. Bluetooth-hörlurar har två lägen. A2DP spelar stereo i hög kvalitet men saknar mikrofon. Profilen Hands-Free (HFP, i Windows visad som Hands-Free AG Audio eller Hands-Free Telephony, med enheten listad som headset) för med sig mikrofonen men spelar mono i låg kvalitet, gjort för telefonsamtal. Så fort en app öppnar headsetets mikrofon växlar Windows hörlurarna till Hands-Free: ett spel med röstchatt som Call of Duty eller Fortnite, Discord, Microsoft Teams, Zoom, Google Meet i webbläsaren, Steams röstchatt, Xbox Game Bar, OBS Studio eller en röstassistent. Allt annat du hör låter då också hoptryckt och dovt. Och ibland växlar Windows inte tillbaka när appen har släppt mikrofonen.\n\nSe vad som händer. Ikonen i systemfältet visar med en blick om hörlurarna spelar i stereo, har hamnat i samtalsläge eller skyddas av ”Alltid stereo”. Klicka på den, så pekar panelen ut de appar som använder headsetets mikrofon just nu och varnar dig när hörlurarna är Windows standardmikrofon, den vanligaste orsaken till att de hela tiden växlar. Valfria Windows-aviseringar berättar direkt när ljudet blir mono och vilken app som slog på mikrofonen.\n\nFå tillbaka stereo med ett klick. När hörlurarna har fastnat i samtalsläge startar ”Återställ stereo” om hörlurarnas ljud en gång, precis som om du hade anslutit dem på nytt, utan att ändra några Windows-inställningar. Samtalsläget upphör, ljudet är stereo igen och headsetets mikrofon fungerar fortfarande för nästa samtal. Panelen visar varje steg live och återställer till och med en Bluetooth-handsfreetjänst som har slutat svara.\n\n”Alltid stereo” för gamers och alla med en separat mikrofon. Om du pratar via en laptop-, USB- eller bordsmikrofon, eller inte behöver någon mikrofon alls, slå på ”Alltid stereo”. Det stänger av Bluetooth-profilen Hands-Free i Windows, så att inget spel eller ingen app kan växla hörlurarna till samtalsläge igen: du får alltid full A2DP-stereo med bas, detaljer och positionsljud i spel. Reglaget är ärligt om avvägningen: så länge det är på fungerar inte hörlurarnas egen mikrofon.\n\nTryggt och helt återställbart. Innan ”Alltid stereo” ändrar något minns StereoKeeper exakt hur Windows var inställt. Slå av reglaget, så går Windows tillbaka till precis det tillståndet, med samtalsläget tillåtet igen. Efter varje åtgärd kontrollerar appen resultatet, och den inbyggda hjälpen förklarar i klartext vad varje knapp ändrar och hur du ångrar det. Windows ber om tillstånd först när appen ändrar en inställning; att bevaka hörlurarna kräver det aldrig.\n\nGjord för gamers, streamers, distansarbetare och studenter: spelare vars spelljud blir platt när röstchatten startar, streamers vars inspelningsprogram tog headsetets mikrofon, människor som vill att musiken ska låta rätt igen efter ett samtal i Microsoft Teams eller Zoom, och alla vars AirPods, Galaxy Buds eller hörlurar från Sony, Bose, JBL eller Jabra låter som ett telefonsamtal på en Windows-dator.\n\nLätt och privat. StereoKeeper sitter tyst i systemfältet med ungefär 25 MB minne, praktiskt taget ingen processoranvändning och ingen användning av grafikkortet, så spelen behåller varje bildruta. Ingen bakgrundstjänst, inga annonser, inget konto, ingen telemetri och inga nätverksanslutningar: dina data stannar på din dator. Starta med Windows, 30 gränssnittsspråk som väljs efter ditt Windows-språk och en knapp ”Kopiera info till utvecklaren” som förbereder en felrapport med din användarmapp dold.\n\nVanliga frågor. Varför låter mitt headset dåligt bara medan Discord eller ett spel är öppet? För att appen använder headsetets mikrofon, och Windows kan bara använda den i samtalsläget Hands-Free; välj en annan mikrofon i appen eller slå på ”Alltid stereo”. Förlorar jag headsetets mikrofon? Inte med ”Återställ stereo”. Bara ”Alltid stereo” stänger av den, och bara tills du slår av reglaget. Ändrar StereoKeeper mina drivrutiner eller ljudeffekter? Nej. Appen installerar varken drivrutiner eller ljudeffekter; den startar bara om eller stänger av de Bluetooth-handsfreetjänster i Windows som avgör mellan stereo och samtalsläge. Vad ska jag göra innan jag avinstallerar? Slå först av ”Alltid stereo”, så att Windows är precis som det var.\n\nFungerar i Windows 11 och Windows 10 (version 2004 eller senare), på x64- och Arm-datorer, med Bluetooth-hörlurar, hörsnäckor och headset som använder standardprofilen Hands-Free, vilket är nästan alla. StereoKeeper är gratis och har öppen källkod under MIT-licensen, med källkoden på GitHub.",
+  "features": [
+    "Fixar dovt, mono Bluetooth-ljud i Windows 11 och 10",
+    "Ett klick ger tillbaka stereo utan att ändra Windows-inställningar",
+    "Visar vilken app som använder headsetets mikrofon just nu",
+    "Ikonen visar stereo, samtalsläge eller Alltid stereo med en blick",
+    "”Alltid stereo” stänger av samtalsläget Hands-Free (HFP) för gott",
+    "Att slå av ”Alltid stereo” återställer Windows precis som förut",
+    "Headsetets mikrofon fungerar kvar efter ”Återställ stereo”",
+    "Varnar när hörlurarna är Windows standardmikrofon",
+    "Valfria aviseringar när ljudet blir mono",
+    "Livesteg visar vad Windows gör vid varje åtgärd",
+    "Återställer en Bluetooth-handsfreetjänst som slutat svara",
+    "Kontrollerar resultatet efter varje åtgärd och rapporterar problem",
+    "Inbyggd hjälp förklarar varje knapp och hur du ångrar den",
+    "För hörlurar, hörsnäckor och gamingheadset av alla märken",
+    "Starta med Windows: ikonen finns direkt i systemfältet",
+    "Cirka 25 MB minne, nästan ingen CPU, ingen GPU-användning",
+    "Inga annonser, inget konto, ingen telemetri, inga nätverksanslutningar",
+    "”Kopiera info till utvecklaren” för snabba felrapporter",
+    "30 gränssnittsspråk, valda efter ditt Windows-språk",
+    "Gratis och öppen källkod (MIT-licens) på GitHub"
+  ],
+  "searchTerms": [
+    "bluetooth dåligt ljud",
+    "bluetooth hörlurar mono",
+    "dovt ljud hörlurar",
+    "stäng av hands-free",
+    "headset låter som telefon",
+    "bluetooth ljudkvalitet",
+    "a2dp hfp"
+  ],
+  "screenshotCaptions": [
+    "Hörlurar i samtalsläge och apparna som använder mikrofonen, stereo tillbaka med ett klick och ”Alltid stereo” påslaget",
+    "Stereo tillbaka steg för steg, inställningarna och den inbyggda hjälpen"
+  ]
+}

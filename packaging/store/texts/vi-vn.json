@@ -1,0 +1,39 @@
+{
+  "shortDescription": "Tai nghe Bluetooth trên Windows 11 hoặc Windows 10 bỗng nghe rè đục, thành mono hoặc như đang gọi điện? Windows đã chuyển tai nghe từ stereo A2DP sang chế độ cuộc gọi Hands-Free (HFP) vì một trò chơi, Discord, Microsoft Teams, Zoom hay trình duyệt vừa bật micro của tai nghe. StereoKeeper là ứng dụng miễn phí ở khay hệ thống: báo khi tai nghe rơi vào chế độ cuộc gọi, cho biết ứng dụng nào đã chiếm micro và khôi phục âm thanh stereo chất lượng cao chỉ với một cú nhấp khi Windows để tai nghe kẹt ở chế độ đó. “Luôn stereo” chặn hẳn chế độ cuộc gọi nếu bạn dùng micro riêng, và khi tắt, Windows trở về đúng như cũ. Dùng được với tai nghe Bluetooth, tai nghe nhét tai không dây và tai nghe chơi game. Không quảng cáo, không cần tài khoản, không thu thập dữ liệu, 30 ngôn ngữ, mã nguồn mở.",
+  "description": "StereoKeeper sửa lỗi tai nghe Bluetooth đột nhiên nghe rè đục, mỏng, mono hoặc như đang gọi điện trên Windows 11 và Windows 10. Nếu nhạc, game hay phim mất hết âm trầm và hiệu ứng stereo ngay khi bạn vào phòng chat thoại, hoặc âm thanh vẫn tệ cả khi cuộc gọi đã kết thúc, ứng dụng này dành cho bạn. StereoKeeper (trước đây là BluetoothHandsFreeToggle) nằm ở khay hệ thống, cho bạn thấy tình trạng thật của tai nghe chỉ trong một cái nhìn và khôi phục âm thanh stereo chất lượng cao chỉ với một cú nhấp.\n\nVì sao tai nghe Bluetooth nghe tệ trên máy tính. Tai nghe Bluetooth có hai chế độ. A2DP phát stereo chất lượng cao nhưng không có micro. Hồ sơ rảnh tay (HFP, Windows hiển thị là Hands-Free AG Audio hoặc Hands-Free Telephony, còn thiết bị được liệt kê là tai nghe có micro) truyền được micro nhưng chỉ phát âm thanh mono chất lượng thấp, vốn dành cho cuộc gọi điện thoại. Ngay khi bất kỳ ứng dụng nào mở micro của tai nghe, Windows chuyển tai nghe sang chế độ Hands-Free: một trò chơi có chat thoại như Call of Duty hay Fortnite, Discord, Microsoft Teams, Zoom, Google Meet trong trình duyệt, chat thoại của Steam, Xbox Game Bar, OBS Studio hoặc trợ lý giọng nói. Khi đó mọi âm thanh khác bạn nghe cũng bị nén và rè đục. Và đôi khi Windows không chuyển lại, dù ứng dụng đã nhả micro.\n\nThấy rõ chuyện gì đang xảy ra. Biểu tượng ở khay hệ thống cho biết ngay tai nghe đang phát stereo, đã rơi vào chế độ cuộc gọi hay đang được “Luôn stereo” bảo vệ. Nhấp vào biểu tượng, bảng điều khiển sẽ nêu tên các ứng dụng đang dùng micro của tai nghe và cảnh báo khi tai nghe là micro mặc định của Windows, nguyên nhân phổ biến nhất khiến tai nghe cứ chuyển chế độ liên tục. Thông báo Windows tùy chọn cho bạn biết ngay khi âm thanh thành mono và ứng dụng nào đã bật micro.\n\nKhôi phục stereo chỉ với một cú nhấp. Khi tai nghe bị kẹt ở chế độ cuộc gọi, “Khôi phục stereo” khởi động lại âm thanh tai nghe một lần, giống như bạn kết nối lại tai nghe, mà không đổi bất kỳ cài đặt Windows nào. Chế độ cuộc gọi kết thúc, âm thanh trở lại stereo và micro của tai nghe vẫn dùng được cho cuộc gọi tiếp theo. Bảng điều khiển hiển thị từng bước trực tiếp và thậm chí khôi phục được dịch vụ rảnh tay Bluetooth đã ngừng phản hồi.\n\n“Luôn stereo” cho game thủ và bất kỳ ai có micro riêng. Nếu bạn nói qua micro của laptop, micro USB hay micro để bàn, hoặc không cần micro, hãy bật “Luôn stereo”. Tính năng này tắt hồ sơ rảnh tay Bluetooth trong Windows, nên không trò chơi hay ứng dụng nào có thể chuyển tai nghe sang chế độ cuộc gọi nữa: bạn luôn có stereo A2DP đầy đủ với âm trầm, chi tiết và định vị âm thanh trong game. Công tắc này nói thẳng về sự đánh đổi: khi đang bật, micro của chính tai nghe không hoạt động.\n\nAn toàn và hoàn toàn có thể hoàn tác. Trước khi “Luôn stereo” thay đổi bất cứ điều gì, StereoKeeper ghi nhớ chính xác cách Windows đã được thiết lập. Tắt công tắc, Windows sẽ trở về đúng trạng thái đó, và chế độ cuộc gọi lại được cho phép. Sau mỗi thao tác, ứng dụng kiểm tra kết quả, và phần trợ giúp tích hợp giải thích bằng lời dễ hiểu mỗi nút thay đổi gì và cách hoàn tác. Windows chỉ hỏi quyền khi ứng dụng thay đổi một cài đặt; việc theo dõi tai nghe không bao giờ cần quyền.\n\nDành cho game thủ, streamer, người làm việc từ xa và sinh viên: người chơi có âm thanh game bị dẹt đi khi chat thoại bắt đầu, streamer có phần mềm ghi hình chiếm micro của tai nghe, những ai muốn nhạc nghe đúng trở lại sau cuộc gọi Microsoft Teams hoặc Zoom, và bất kỳ ai có AirPods, Galaxy Buds, tai nghe Sony, Bose, JBL hay Jabra nghe như đang gọi điện trên máy tính Windows.\n\nNhẹ và riêng tư. StereoKeeper nằm yên lặng ở khay hệ thống, dùng khoảng 25 MB bộ nhớ, gần như không tốn CPU và không dùng card đồ họa, nên game giữ nguyên từng khung hình. Không có dịch vụ chạy nền, không quảng cáo, không cần tài khoản, không đo từ xa và không kết nối mạng: dữ liệu của bạn ở lại trên máy tính. Khởi động cùng Windows, 30 ngôn ngữ giao diện được chọn theo ngôn ngữ Windows, và nút “Sao chép thông tin cho nhà phát triển” chuẩn bị báo cáo lỗi với thư mục người dùng của bạn đã được ẩn.\n\nCâu hỏi thường gặp. Vì sao tai nghe chỉ nghe tệ khi đang mở Discord hoặc một trò chơi? Vì ứng dụng đó đang dùng micro của tai nghe, và Windows chỉ dùng được micro này ở chế độ cuộc gọi Hands-Free; hãy chọn micro khác trong ứng dụng đó hoặc bật “Luôn stereo”. Tôi có mất micro của tai nghe không? Không với “Khôi phục stereo”. Chỉ “Luôn stereo” mới tắt micro, và chỉ cho đến khi bạn tắt công tắc. StereoKeeper có thay đổi trình điều khiển hay hiệu ứng âm thanh của tôi không? Không. Ứng dụng không cài trình điều khiển hay hiệu ứng âm thanh; nó chỉ khởi động lại hoặc tắt các dịch vụ rảnh tay Bluetooth của Windows, thứ quyết định giữa stereo và chế độ cuộc gọi. Nên làm gì trước khi gỡ cài đặt? Hãy tắt “Luôn stereo” trước, để Windows trở về đúng như cũ.\n\nHoạt động trên Windows 11 và Windows 10 (phiên bản 2004 trở lên), trên máy x64 và Arm, với tai nghe Bluetooth, tai nghe nhét tai và tai nghe có micro dùng hồ sơ rảnh tay chuẩn, tức gần như tất cả. StereoKeeper miễn phí và mã nguồn mở theo giấy phép MIT, mã nguồn có trên GitHub.",
+  "features": [
+    "Sửa tai nghe Bluetooth bị rè đục, mono trên Windows 11 và 10",
+    "Một cú nhấp khôi phục stereo, không đổi cài đặt Windows",
+    "Cho biết ứng dụng nào đang dùng micro của tai nghe",
+    "Biểu tượng khay hiện stereo, chế độ cuộc gọi hay Luôn stereo",
+    "“Luôn stereo” chặn hẳn chế độ cuộc gọi Hands-Free (HFP)",
+    "Tắt “Luôn stereo”, Windows trở về đúng như cũ",
+    "Micro của tai nghe vẫn dùng được sau “Khôi phục stereo”",
+    "Cảnh báo khi tai nghe là micro mặc định của Windows",
+    "Thông báo tùy chọn khi âm thanh thành mono",
+    "Các bước trực tiếp cho thấy Windows đang làm gì ở mỗi thao tác",
+    "Khôi phục dịch vụ rảnh tay Bluetooth đã ngừng phản hồi",
+    "Kiểm tra kết quả sau mỗi thao tác và báo mọi sự cố",
+    "Trợ giúp tích hợp giải thích từng nút và cách hoàn tác",
+    "Dành cho tai nghe, tai nghe nhét tai và tai nghe game mọi hãng",
+    "Khởi động cùng Windows: biểu tượng có ngay ở khay",
+    "Khoảng 25 MB bộ nhớ, gần như không tốn CPU, không dùng GPU",
+    "Không quảng cáo, không tài khoản, không đo từ xa, không kết nối mạng",
+    "Sao chép thông tin cho nhà phát triển để báo lỗi nhanh",
+    "30 ngôn ngữ giao diện, chọn theo ngôn ngữ Windows",
+    "Miễn phí, mã nguồn mở (giấy phép MIT) trên GitHub"
+  ],
+  "searchTerms": [
+    "tai nghe rè",
+    "bluetooth mono",
+    "bluetooth nghe rè",
+    "tắt hands-free",
+    "tai nghe gọi điện",
+    "âm thanh tai nghe",
+    "a2dp hfp"
+  ],
+  "screenshotCaptions": [
+    "Tai nghe ở chế độ cuộc gọi và các ứng dụng dùng micro của nó, khôi phục stereo bằng một cú nhấp, và “Luôn stereo” đã bật",
+    "Khôi phục stereo từng bước, cài đặt và phần trợ giúp tích hợp"
+  ]
+}

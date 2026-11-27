@@ -1,0 +1,39 @@
+{
+  "shortDescription": "Căștile Bluetooth sună brusc înfundat, mono sau ca un apel telefonic în Windows 11 sau Windows 10? Windows le-a trecut de la stereo A2DP la profilul de apel Hands-Free (HFP), pentru că un joc, Discord, Microsoft Teams, Zoom sau un browser a pornit microfonul căștilor. StereoKeeper este o aplicație gratuită din bara de sistem: arată când căștile au căzut în modul apel, numește aplicația care a luat microfonul și readuce cu un singur clic sunetul stereo de calitate, când Windows le lasă blocate acolo. „Mereu stereo” blochează definitiv modul apel dacă folosești un microfon separat, iar dezactivarea lui readuce Windows exact la starea de dinainte. Funcționează cu căști Bluetooth, căști in-ear și căști de gaming. Fără reclame, fără cont, fără colectare de date, 30 de limbi, open source.",
+  "description": "StereoKeeper repară căștile Bluetooth care încep brusc să sune înfundat, metalic, mono sau ca un apel telefonic în Windows 11 și Windows 10. Dacă muzica, jocurile și filmele și-au pierdut basul și stereo chiar în momentul în care ai intrat într-un chat vocal sau dacă sunetul a rămas prost și după terminarea apelului, aplicația asta este pentru tine. StereoKeeper (fost BluetoothHandsFreeToggle) stă în bara de sistem, arată dintr-o privire starea reală a căștilor și readuce cu un singur clic sunetul stereo de calitate.\n\nDe ce sună prost căștile Bluetooth pe PC. Căștile Bluetooth au două moduri. A2DP redă stereo de calitate, dar fără microfon. Profilul Hands-Free (HFP, afișat în Windows ca Hands-Free AG Audio sau Hands-Free Telephony, cu dispozitivul listat ca set cu cască și microfon) transmite microfonul, dar redă sunet mono de calitate slabă, făcut pentru apeluri telefonice. De îndată ce o aplicație deschide microfonul căștilor, Windows le trece în modul Hands-Free: un joc cu chat vocal precum Call of Duty sau Fortnite, Discord, Microsoft Teams, Zoom, Google Meet în browser, chatul vocal din Steam, Xbox Game Bar, OBS Studio sau un asistent vocal. Tot restul sunetului sună atunci comprimat și înfundat. Iar uneori Windows nu revine la stereo nici după ce aplicația a eliberat microfonul.\n\nVezi ce se întâmplă. Pictograma din bara de sistem arată dintr-o privire dacă căștile redau în stereo, au căzut în modul apel sau sunt protejate de „Mereu stereo”. Fă clic pe ea, iar panoul numește aplicațiile care folosesc chiar acum microfonul căștilor și te avertizează când căștile sunt microfonul implicit din Windows, cea mai frecventă cauză a comutărilor repetate. Notificările Windows opționale îți spun în clipa în care sunetul devine mono și ce aplicație a pornit microfonul.\n\nReadu stereo cu un singur clic. Când căștile sunt blocate în modul apel, „Readu stereo” repornește o dată sunetul căștilor, ca și cum le-ai fi reconectat, fără să schimbe nicio setare Windows. Modul apel se termină, sunetul este din nou stereo, iar microfonul căștilor continuă să funcționeze pentru următorul tău apel. Panoul arată fiecare pas în direct și chiar recuperează un serviciu Bluetooth Hands-Free care a încetat să răspundă.\n\n„Mereu stereo” pentru gameri și pentru oricine are un microfon separat. Dacă vorbești printr-un microfon de laptop, USB sau de birou ori nu ai nevoie deloc de microfon, activează „Mereu stereo”. Dezactivează în Windows profilul Bluetooth Hands-Free, așa că niciun joc sau aplicație nu-ți mai poate trece căștile în modul apel: ai mereu stereo A2DP complet, cu bas, detaliu și sunet pozițional în jocuri. Comutatorul este sincer în privința compromisului: cât timp este pornit, microfonul propriu al căștilor nu funcționează.\n\nSigur și complet reversibil. Înainte ca „Mereu stereo” să schimbe ceva, StereoKeeper reține exact cum era configurat Windows. Oprește comutatorul, iar Windows revine exact la acea stare, cu modul apel permis din nou. După fiecare acțiune aplicația verifică rezultatul, iar ajutorul integrat explică pe înțelesul tuturor ce schimbă fiecare buton și cum se anulează. Windows cere permisiunea doar când aplicația schimbă o setare; urmărirea căștilor nu o cere niciodată.\n\nCreată pentru gameri, streameri, angajați la distanță și studenți: pentru jucătorii ai căror sunet din joc devine plat când începe chatul vocal, pentru streamerii ai căror program de captură a luat microfonul căștilor, pentru cei care vor ca muzica să sune din nou bine după un apel în Microsoft Teams sau Zoom și pentru oricine are AirPods, Galaxy Buds sau căști Sony, Bose, JBL ori Jabra care sună ca un telefon pe un PC cu Windows.\n\nUșoară și privată. StereoKeeper stă discret în bara de sistem cu aproximativ 25 MB de memorie, practic fără procesor și fără placa video, așa că jocurile păstrează fiecare cadru. Fără serviciu în fundal, fără reclame, fără cont, fără telemetrie și fără conexiuni la rețea: datele tale rămân pe PC. Pornire odată cu Windows, 30 de limbi de interfață alese după limba Windows și un buton „Copiază informații pentru dezvoltator” care pregătește un raport de eroare cu folderul tău de utilizator ascuns.\n\nÎntrebări frecvente. De ce sună prost căștile doar cât timp este deschis Discord sau un joc? Pentru că aplicația respectivă folosește microfonul căștilor, iar Windows îl poate folosi doar în modul apel Hands-Free; alege alt microfon în aplicație sau activează „Mereu stereo”. Pierd microfonul căștilor? Nu cu „Readu stereo”. Doar „Mereu stereo” îl oprește, și doar până când dezactivezi comutatorul. Schimbă StereoKeeper driverele sau efectele audio? Nu. Nu instalează drivere și nici efecte audio; doar repornește sau oprește serviciile Bluetooth Hands-Free din Windows care aleg între stereo și modul apel. Ce fac înainte de dezinstalare? Dezactivează mai întâi „Mereu stereo”, ca Windows să revină exact cum era.\n\nFuncționează în Windows 11 și Windows 10 (versiunea 2004 sau mai nouă), pe PC-uri x64 și Arm, cu căști Bluetooth, căști in-ear și headset-uri care folosesc profilul standard Hands-Free, adică aproape toate. StereoKeeper este gratuit și open source sub licența MIT, cu codul sursă pe GitHub.",
+  "features": [
+    "Repară sunetul înfundat, mono al căștilor Bluetooth în Windows 11 și 10",
+    "Un clic readuce stereo fără să schimbe setările Windows",
+    "Arată ce aplicație folosește acum microfonul căștilor",
+    "Pictograma arată stereo, modul apel sau „Mereu stereo”",
+    "„Mereu stereo” blochează definitiv modul apel Hands-Free (HFP)",
+    "Dezactivarea „Mereu stereo” readuce Windows exact cum era",
+    "Microfonul căștilor continuă să funcționeze după „Readu stereo”",
+    "Avertizează când căștile sunt microfonul implicit din Windows",
+    "Notificări opționale când sunetul devine mono",
+    "Pași în direct arată ce face Windows la fiecare acțiune",
+    "Recuperează un serviciu Bluetooth Hands-Free care nu mai răspunde",
+    "Verifică rezultatul după fiecare acțiune și raportează problemele",
+    "Ajutorul integrat explică fiecare buton și cum se anulează",
+    "Pentru căști, căști in-ear și headset-uri de gaming de orice marcă",
+    "Pornire cu Windows: pictograma apare imediat în bara de sistem",
+    "Circa 25 MB de memorie, procesor aproape zero, fără placa video",
+    "Fără reclame, cont, telemetrie și conexiuni la rețea",
+    "„Copiază informații pentru dezvoltator” pentru rapoarte rapide",
+    "30 de limbi de interfață, alese după limba Windows",
+    "Gratuit și open source (licența MIT) pe GitHub"
+  ],
+  "searchTerms": [
+    "sunet prost bluetooth",
+    "sunet înfundat căști",
+    "căști bluetooth mono",
+    "sunet de telefon",
+    "dezactivare hands-free",
+    "hands-free ag audio",
+    "a2dp hfp"
+  ],
+  "screenshotCaptions": [
+    "Căști în modul apel și aplicațiile care le folosesc microfonul, stereo cu un clic și „Mereu stereo” activat",
+    "Readucerea stereo pas cu pas, setările și ajutorul integrat"
+  ]
+}

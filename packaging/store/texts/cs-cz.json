@@ -1,0 +1,39 @@
+{
+  "shortDescription": "Znějí vaše sluchátka Bluetooth ve Windows 11 nebo Windows 10 najednou tlumeně, v mono nebo jako při telefonním hovoru? Windows je přepnul ze sterea A2DP do hovorového profilu Hands-Free (HFP), protože hra, Discord, Microsoft Teams, Zoom nebo prohlížeč zapnuly mikrofon headsetu. StereoKeeper je bezplatná aplikace v oznamovací oblasti, která ukáže, kdy sluchátka spadnou do režimu hovoru, pojmenuje aplikaci, která si vzala mikrofon, a jedním kliknutím vrátí kvalitní stereo, když Windows nechá sluchátka v tomto režimu uvíznout. „Vždy stereo“ režim hovoru trvale zablokuje, pokud používáte samostatný mikrofon, a po vypnutí je Windows přesně takový, jaký byl. Funguje se sluchátky Bluetooth, špuntovými sluchátky i herními headsety. Bez reklam, bez účtu, bez sběru dat, 30 jazyků, otevřený zdrojový kód.",
+  "description": "StereoKeeper opravuje sluchátka Bluetooth, která ve Windows 11 a Windows 10 najednou znějí tlumeně, plechově, v mono nebo jako při telefonním hovoru. Pokud hudba, hry nebo filmy přišly o basy a stereo ve chvíli, kdy jste se připojili k hlasovému chatu, nebo pokud zvuk zůstal špatný i po skončení hovoru, je tato aplikace pro vás. StereoKeeper (dříve BluetoothHandsFreeToggle) sídlí v oznamovací oblasti, na první pohled ukazuje skutečný stav sluchátek a jedním kliknutím vrací kvalitní stereo zvuk.\n\nProč sluchátka Bluetooth na počítači špatně znějí. Sluchátka Bluetooth mají dva režimy. A2DP přehrává kvalitní stereo, ale nemá mikrofon. Profil Hands-Free (HFP, ve Windows zobrazený jako Hands-Free AG Audio nebo Hands-Free Telephony, přičemž zařízení je uvedeno jako náhlavní souprava) přenáší mikrofon, ale přehrává zvuk mono ve špatné kvalitě, určený pro telefonní hovory. Jakmile jakákoli aplikace otevře mikrofon headsetu, Windows přepne sluchátka do režimu Hands-Free: hra s hlasovým chatem jako Call of Duty nebo Fortnite, Discord, Microsoft Teams, Zoom, Google Meet v prohlížeči, hlasový chat Steamu, Xbox Game Bar, OBS Studio nebo hlasový asistent. Všechno ostatní, co slyšíte, pak zní také stlačeně a tlumeně. A někdy se Windows nepřepne zpět, ani když aplikace mikrofon už uvolnila.\n\nPodívejte se, co se děje. Ikona v oznamovací oblasti na první pohled ukazuje, zda sluchátka hrají ve stereu, spadla do režimu hovoru, nebo je chrání „Vždy stereo“. Klikněte na ni a panel pojmenuje aplikace, které právě používají mikrofon headsetu, a upozorní vás, když jsou sluchátka výchozím mikrofonem Windows, což je nejčastější důvod, proč se pořád přepínají. Volitelná oznámení Windows vám hned řeknou, kdy se zvuk změnil na mono a která aplikace zapnula mikrofon.\n\nStereo zpět jedním kliknutím. Když sluchátka uvízla v režimu hovoru, „Vrátit stereo“ jednou restartuje zvuk sluchátek, jako byste je znovu připojili, a nezmění přitom žádné nastavení Windows. Režim hovoru skončí, zvuk je zase stereo a mikrofon headsetu dál funguje pro váš další hovor. Panel zobrazuje každý krok živě a dokonce obnoví službu Bluetooth Hands-Free, která přestala odpovídat.\n\n„Vždy stereo“ pro hráče a každého se samostatným mikrofonem. Pokud mluvíte přes mikrofon notebooku, USB mikrofon nebo stolní mikrofon, nebo mikrofon vůbec nepotřebujete, zapněte „Vždy stereo“. Vypne ve Windows profil Bluetooth Hands-Free, takže žádná hra ani aplikace už sluchátka nepřepne do režimu hovoru: vždy máte plnohodnotné stereo A2DP s basy, detaily a prostorovým zvukem ve hrách. Přepínač je upřímný o své nevýhodě: dokud je zapnutý, vlastní mikrofon sluchátek nefunguje.\n\nBezpečné a plně vratné. Než „Vždy stereo“ cokoli změní, StereoKeeper si přesně zapamatuje, jak byl Windows nastaven. Vypněte přepínač a Windows se vrátí přesně do tohoto stavu, s opět povoleným režimem hovoru. Po každé akci aplikace zkontroluje výsledek a vestavěná nápověda jednoduše vysvětlí, co každé tlačítko mění a jak to vrátit zpět. Windows žádá o oprávnění jen tehdy, když aplikace mění nastavení; sledování sluchátek ho nikdy nevyžaduje.\n\nVytvořeno pro hráče, streamery, lidi pracující na dálku a studenty: pro hráče, jimž se zvuk hry zploští, jakmile začne hlasový chat, pro streamery, jimž nahrávací software převzal mikrofon headsetu, pro ty, kdo chtějí, aby hudba po hovoru v Microsoft Teams nebo Zoomu zase dobře zněla, a pro každého, komu AirPods, Galaxy Buds nebo sluchátka Sony, Bose, JBL či Jabra na počítači s Windows znějí jako telefonní hovor.\n\nNenáročná a soukromá. StereoKeeper tiše sídlí v oznamovací oblasti, zabírá asi 25 MB paměti, téměř nezatěžuje procesor a nepoužívá grafickou kartu, takže hry nepřijdou ani o jeden snímek. Žádná služba na pozadí, žádné reklamy, žádný účet, žádná telemetrie a žádná síťová připojení: vaše data zůstávají v počítači. Spouštění s Windows, 30 jazyků rozhraní vybíraných podle jazyka Windows a tlačítko „Kopírovat info pro vývojáře“, které připraví hlášení o chybě se skrytou složkou uživatele.\n\nČasté dotazy. Proč můj headset špatně zní, jen když je otevřený Discord nebo hra? Protože tato aplikace používá mikrofon headsetu a Windows ho umí použít jen v hovorovém režimu Hands-Free; vyberte v aplikaci jiný mikrofon nebo zapněte „Vždy stereo“. Přijdu o mikrofon headsetu? Ne při použití „Vrátit stereo“. Vypíná ho jen „Vždy stereo“, a to jen do chvíle, než přepínač vypnete. Mění StereoKeeper ovladače nebo zvukové efekty? Ne. Aplikace neinstaluje žádné ovladače ani zvukové efekty; jen restartuje nebo vypíná služby Bluetooth Hands-Free ve Windows, které rozhodují mezi stereem a režimem hovoru. Co udělat před odinstalací? Nejprve vypněte „Vždy stereo“, aby byl Windows přesně takový, jaký byl.\n\nFunguje ve Windows 11 a Windows 10 (verze 2004 nebo novější), na počítačích x64 i Arm, se sluchátky Bluetooth, špuntovými sluchátky a headsety, které používají standardní profil Hands-Free, tedy téměř se všemi. StereoKeeper je zdarma a s otevřeným zdrojovým kódem pod licencí MIT, kód je na GitHubu.",
+  "features": [
+    "Opravuje tlumený zvuk mono sluchátek Bluetooth ve Windows 11 a 10",
+    "Jedno kliknutí vrátí stereo bez změny nastavení Windows",
+    "Ukáže, která aplikace právě používá mikrofon headsetu",
+    "Ikona v oznamovací oblasti ukazuje stereo, režim hovoru nebo Vždy stereo",
+    "„Vždy stereo“ trvale blokuje hovorový režim Hands-Free (HFP)",
+    "Vypnutí „Vždy stereo“ vrátí Windows přesně do původního stavu",
+    "Mikrofon headsetu funguje i po použití „Vrátit stereo“",
+    "Upozorní, když jsou sluchátka výchozím mikrofonem Windows",
+    "Volitelná oznámení, když se zvuk změní na mono",
+    "Živé kroky ukazují, co Windows dělá při každé akci",
+    "Obnoví službu Bluetooth Hands-Free, která přestala odpovídat",
+    "Po každé akci zkontroluje výsledek a ohlásí problém",
+    "Vestavěná nápověda vysvětlí každé tlačítko a jak ho vrátit zpět",
+    "Pro sluchátka, špunty i herní headsety jakékoli značky",
+    "Spouštění s Windows: ikona je hned v oznamovací oblasti",
+    "Asi 25 MB paměti, téměř nulový procesor, žádné využití GPU",
+    "Bez reklam, bez účtu, bez telemetrie, bez síťových připojení",
+    "„Kopírovat info pro vývojáře“ pro rychlá hlášení chyb",
+    "30 jazyků rozhraní, vybraných podle jazyka Windows",
+    "Zdarma a open source (licence MIT) na GitHubu"
+  ],
+  "searchTerms": [
+    "bluetooth špatný zvuk",
+    "bluetooth sluchátka mono",
+    "tlumený zvuk sluchátek",
+    "vypnout hands-free",
+    "sluchátka znějí jako telefon",
+    "kvalita zvuku bluetooth",
+    "a2dp hfp"
+  ],
+  "screenshotCaptions": [
+    "Sluchátka v režimu hovoru a aplikace používající mikrofon, stereo zpět jedním kliknutím a zapnuté „Vždy stereo“",
+    "Návrat stereo zvuku krok za krokem, nastavení a vestavěná nápověda"
+  ]
+}

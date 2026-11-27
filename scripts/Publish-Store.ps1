@@ -24,6 +24,7 @@ param(
 # Builds the Microsoft Store submission from the same sources as the GitHub release:
 #   artifacts/store/v<version>/StereoKeeper_<version>_x64_arm64.msixupload  -> Partner Center, Packages
 #   artifacts/store/v<version>/listing/                                     -> Partner Center, Store listings, Import
+#   artifacts/store/v<version>/listingData-texts.csv                        -> the same listing without the images
 # The x64 and arm64 packages hold the same single-file exe as the GitHub release, with the native
 # libraries next to it instead of unpacked at run time.
 
@@ -39,6 +40,7 @@ $manifestPath = Join-Path $storeRoot "Package.appxmanifest"
 $assetsDirectory = Join-Path $storeRoot "Assets"
 $listingSourceDirectory = Join-Path $storeRoot "listing"
 $listingSchemaPath = Join-Path $storeRoot "listing-schema.csv"
+$listingTextsDirectory = Join-Path $storeRoot "texts"
 $localesPath = Join-Path $PSScriptRoot "winget-locales.json"
 $artifactsRoot = [IO.Path]::GetFullPath((Join-Path $repositoryRoot "artifacts"))
 $storeArtifactsRoot = Join-Path $artifactsRoot "store"
@@ -46,16 +48,30 @@ $storeArtifactsRoot = Join-Path $artifactsRoot "store"
 $architectures = [ordered]@{ "win-x64" = "x64"; "win-arm64" = "arm64" }
 $manifestNamespace = "http://schemas.microsoft.com/appx/manifest/foundation/windows10"
 
-# The WinGet texts are the source of the package name, description and listing.
+# The WinGet texts give the package its localized description; the Store listing has its own,
+# longer texts in packaging/store/texts.
 # Partner Center has no es-419, so Latin American Spanish is listed as es-mx.
 $storeLanguageOverrides = @{ "es-419" = "es-mx" }
 
 $listingDeveloper = "Avazbek Olimov"
 $listingCopyright = "© 2026 Avazbek Olimov"
 
-# Store search terms, picked from the WinGet tags in this order. Game and brand names stay out of
-# the keywords; the description names them where they matter.
-$searchTags = @("bluetooth-audio-fix", "bluetooth-headset", "hands-free", "stereo-audio", "low-quality-audio", "a2dp", "hfp")
+# Partner Center limits for the listing texts. Its documentation gives 40 or 30 characters for a
+# search term depending on the page; the stricter one is used.
+$listingLimits = @{
+    ShortDescription = 1000
+    Description = 10000
+    Features = 20
+    Feature = 200
+    SearchTerms = 7
+    SearchTerm = 30
+    SearchTermWords = 21
+    Caption = 200
+}
+
+# Rows of the listing that hold images. The text-only CSV leaves them out, so importing it keeps
+# the screenshots and logos already uploaded by hand.
+$listingImageRows = '^((Desktop|Mobile|Xbox|Holographic|SurfaceHub)Screenshot\d+|StoreLogo.*|PromoImage.*|XboxBrandedKeyArt.*|XboxTitledHero.*|XboxFeaturedPromo.*|OptionalPromo.*)$'
 
 function Get-StoreLanguage {
     param([string]$Locale)
@@ -119,6 +135,79 @@ function Select-ManifestTexts {
     return $selected
 }
 
+# The Store listing texts, one file per manifest language: packaging/store/texts/<language>.json.
+function Read-ListingTexts {
+    param([string[]]$Languages)
+
+    $listing = [ordered]@{}
+    foreach ($language in $Languages) {
+        $path = Join-Path $listingTextsDirectory "$language.json"
+        if (-not (Test-Path -LiteralPath $path -PathType Leaf)) {
+            throw "The Store listing has no texts for ${language}: $path is missing."
+        }
+
+        $text = Get-Content -Raw -LiteralPath $path -Encoding UTF8 | ConvertFrom-Json
+        Assert-ListingTexts -Language $language -Text $text
+        $listing[$language] = $text
+    }
+
+    return $listing
+}
+
+function Assert-ListingTexts {
+    param(
+        [string]$Language,
+        [object]$Text
+    )
+
+    $problems = [Collections.Generic.List[string]]::new()
+    $check = {
+        param([string]$Name, [object]$Value, [int]$Limit)
+
+        if ($Value -isnot [string] -or [string]::IsNullOrWhiteSpace($Value)) {
+            $problems.Add("$Name is empty")
+        }
+        elseif ($Value -ne $Value.Trim()) {
+            $problems.Add("$Name has leading or trailing spaces")
+        }
+        elseif ($Value.Length -gt $Limit) {
+            $problems.Add("$Name has $($Value.Length) characters, the limit is $Limit")
+        }
+    }
+
+    & $check "shortDescription" $Text.shortDescription $listingLimits.ShortDescription
+    & $check "description" $Text.description $listingLimits.Description
+
+    $features = @($Text.features)
+    if ($features.Count -lt 1 -or $features.Count -gt $listingLimits.Features) {
+        $problems.Add("features has $($features.Count) entries, the limit is $($listingLimits.Features)")
+    }
+    for ($i = 0; $i -lt $features.Count; $i++) {
+        & $check "feature $($i + 1)" $features[$i] $listingLimits.Feature
+    }
+
+    $terms = @($Text.searchTerms)
+    if ($terms.Count -lt 1 -or $terms.Count -gt $listingLimits.SearchTerms) {
+        $problems.Add("searchTerms has $($terms.Count) entries, the limit is $($listingLimits.SearchTerms)")
+    }
+    foreach ($term in $terms) {
+        & $check "search term '$term'" $term $listingLimits.SearchTerm
+    }
+    # Hyphenated parts count as words here, to stay within the limit however Partner Center counts.
+    $words = ($terms | ForEach-Object { @(([string]$_) -split '[\s-]+' | Where-Object { $_ }).Count } | Measure-Object -Sum).Sum
+    if ($words -gt $listingLimits.SearchTermWords) {
+        $problems.Add("search terms have $words words, the limit is $($listingLimits.SearchTermWords)")
+    }
+
+    foreach ($caption in @($Text.screenshotCaptions)) {
+        & $check "screenshot caption" $caption $listingLimits.Caption
+    }
+
+    if ($problems.Count -gt 0) {
+        throw "The Store listing texts for $Language break the Partner Center limits: $($problems -join '; ')."
+    }
+}
+
 function Write-ResourceStrings {
     param(
         [string]$Directory,
@@ -173,14 +262,14 @@ function Write-PackageManifest {
 function New-StoreListing {
     param(
         [string]$Destination,
-        [Collections.Specialized.OrderedDictionary]$Texts
+        [Collections.Specialized.OrderedDictionary]$Listing
     )
 
     New-Item -ItemType Directory -Path $Destination -Force | Out-Null
     Copy-Item -LiteralPath (Join-Path $listingSourceDirectory "StoreLogo300x300.png") -Destination $Destination
 
     # Each language shows the panel in its own language (New-StoreScreenshots.ps1).
-    $languages = @($Texts.Keys)
+    $languages = @($Listing.Keys)
     $screenshots = @{}
     foreach ($language in $languages) {
         $source = Join-Path $listingSourceDirectory "Screenshots\$language"
@@ -204,18 +293,15 @@ function New-StoreListing {
 
     foreach ($row in $rows) {
         $values = foreach ($language in $languages) {
-            Get-ListingValue -Field $row.Field -Text $Texts[$language] -Screenshots $screenshots[$language]
+            Get-ListingValue -Field $row.Field -Text $Listing[$language] -Screenshots $screenshots[$language]
         }
 
         $cells = @($row.Field, $row.ID, $row."Type (Type)", "") + @($values)
-        $lines.Add(($cells | ForEach-Object { ConvertTo-CsvValue ([string]$_) }) -join ",")
-
-        $textCells = if ($row.Field -match '^(DesktopScreenshot\d+|StoreLogo300x300)$') {
-            @($row.Field, $row.ID, $row."Type (Type)", "") + @($languages | ForEach-Object { "" })
-        } else {
-            $cells
+        $line = ($cells | ForEach-Object { ConvertTo-CsvValue ([string]$_) }) -join ","
+        $lines.Add($line)
+        if ($row.Field -notmatch $listingImageRows) {
+            $textLines.Add($line)
         }
-        $textLines.Add(($textCells | ForEach-Object { ConvertTo-CsvValue ([string]$_) }) -join ",")
     }
 
     # Partner Center imports only UTF-8 without a byte order mark, with CRLF line endings.
@@ -224,7 +310,8 @@ function New-StoreListing {
     [IO.File]::WriteAllText($csvPath, ($lines -join "`r`n") + "`r`n", $encoding)
 
     # Partner Center often fails to import the whole folder, and a CSV imported on its own fails
-    # on the image paths. This copy has the texts only; the images are then added by hand.
+    # on the image paths. This copy has no image rows at all, so it can be imported again after
+    # the screenshots and logos were added by hand without touching them.
     $textCsvPath = Join-Path (Split-Path -Parent $Destination) "listingData-texts.csv"
     [IO.File]::WriteAllText($textCsvPath, ($textLines -join "`r`n") + "`r`n", $encoding)
     return $csvPath
@@ -239,19 +326,17 @@ function Get-ListingValue {
 
     switch -Regex ($Field) {
         '^Title$' { return "StereoKeeper" }
-        '^ShortDescription$' { return ConvertTo-ListingText $Text.ShortDescription }
-        '^Description$' { return ConvertTo-ListingText $Text.Description }
+        '^ShortDescription$' { return ConvertTo-ListingText $Text.shortDescription }
+        '^Description$' { return ConvertTo-ListingText $Text.description }
+        '^Feature(\d+)$' { return Get-ListingItem $Text.features $Matches[1] }
+        '^SearchTerm(\d+)$' { return Get-ListingItem $Text.searchTerms $Matches[1] }
+        '^DesktopScreenshotCaption(\d+)$' { return Get-ListingItem $Text.screenshotCaptions $Matches[1] }
         '^DevStudio$' { return $listingDeveloper }
         '^CopyrightTrademarkInformation$' { return $listingCopyright }
         '^StoreLogo300x300$' { return "StoreLogo300x300.png" }
         '^DesktopScreenshot(\d+)$' {
             $index = [int]$Matches[1] - 1
             return $(if ($index -lt $Screenshots.Count) { $Screenshots[$index] } else { "" })
-        }
-        '^SearchTerm(\d+)$' {
-            $index = [int]$Matches[1] - 1
-            $terms = @(Get-SearchTerms $Text)
-            return $(if ($index -lt $terms.Count) { $terms[$index] } else { "" })
         }
         default { return "" }
     }
@@ -264,18 +349,16 @@ function ConvertTo-ListingText {
     return ($Value.Trim() -replace '\r?\n', "`r`n")
 }
 
-function Get-SearchTerms {
-    param([object]$Text)
+# The n-th entry (1-based) of a list in the listing texts, or an empty cell after its end.
+function Get-ListingItem {
+    param(
+        [object[]]$Items,
+        [string]$Number
+    )
 
-    # Partner Center allows 7 terms of up to 40 characters and 21 words in total.
-    $tags = @($Text.Tags)
-    $terms = @($searchTags | Where-Object { $tags -contains $_ } | ForEach-Object { $_.Replace("-", " ") })
-    $words = ($terms | ForEach-Object { @($_ -split ' ').Count } | Measure-Object -Sum).Sum
-    if ($terms.Count -gt 7 -or $words -gt 21 -or @($terms | Where-Object { $_.Length -gt 40 }).Count -gt 0) {
-        throw "Search terms exceed the Partner Center limits: $($terms -join ', ')."
-    }
-
-    return $terms
+    $index = [int]$Number - 1
+    $list = @($Items)
+    return $(if ($index -lt $list.Count) { [string]$list[$index] } else { "" })
 }
 
 function ConvertTo-CsvValue {
@@ -324,6 +407,7 @@ if (-not $packageVersion.EndsWith(".0")) {
 }
 
 $texts = Select-ManifestTexts (Read-StoreTexts)
+$listing = Read-ListingTexts -Languages @($texts.Keys)
 
 if ($ValidateConfigurationOnly) {
     Write-Host "Store configuration is valid:" -ForegroundColor Green
@@ -446,7 +530,7 @@ $zipPath = [IO.Path]::ChangeExtension($uploadPath, ".zip")
 Compress-Archive -LiteralPath $bundlePath -DestinationPath $zipPath -CompressionLevel Optimal -Force
 Move-Item -LiteralPath $zipPath -Destination $uploadPath -Force
 
-$listingCsv = New-StoreListing -Destination (Join-Path $outputDirectory "listing") -Texts $texts
+$listingCsv = New-StoreListing -Destination (Join-Path $outputDirectory "listing") -Listing $listing
 
 if ($TestCertificateThumbprint) {
     $signTool = Find-WindowsSdkTool "signtool.exe"

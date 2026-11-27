@@ -1,0 +1,39 @@
+{
+  "shortDescription": "Bluetooth kulaklığınız Windows 11 veya Windows 10'da birden boğuk, mono ya da telefon görüşmesi gibi mi çalıyor? Bir oyun, Discord, Microsoft Teams, Zoom veya tarayıcı kulaklık mikrofonunu açtığı için Windows kulaklığı A2DP stereodan Hands-Free (HFP) arama profiline geçirmiştir. StereoKeeper, kulaklığın ne zaman arama moduna düştüğünü gösteren, mikrofonu hangi uygulamanın aldığını söyleyen ve Windows kulaklığı bu modda bıraktığında yüksek kaliteli stereoyu tek tıkla geri getiren ücretsiz bir tepsi uygulamasıdır. Ayrı bir mikrofon kullanıyorsanız “Her zaman stereo” arama modunu kalıcı olarak engeller; kapattığınızda Windows aynen eski haline döner. Bluetooth kulaklıklar, kulak içi kulaklıklar ve oyuncu kulaklıklarıyla çalışır. Reklam, hesap ve veri toplama yok, 30 dil, açık kaynak.",
+  "description": "StereoKeeper, Windows 11 ve Windows 10'da birden boğuk, tiz, mono ya da telefon görüşmesi gibi çalmaya başlayan Bluetooth kulaklıkları düzeltir. Sesli sohbete girdiğiniz anda müziğiniz, oyunlarınız ve filmleriniz bas ve stereosunu kaybettiyse ya da görüşme bittikten sonra da ses kötü kaldıysa bu uygulama tam size göre. StereoKeeper (eski adıyla BluetoothHandsFreeToggle) sistem tepsisinde yaşar, kulaklığınızın gerçek durumunu bir bakışta gösterir ve yüksek kaliteli stereo sesi tek tıkla geri getirir.\n\nBluetooth kulaklık bilgisayarda neden kötü ses verir. Bluetooth kulaklıkların iki modu vardır. A2DP yüksek kaliteli stereo çalar ama mikrofonu yoktur. Hands-Free profili (HFP; Windows'ta Hands-Free AG Audio ya da Hands-Free Telephony olarak görünür, cihaz da kulaklık seti olarak listelenir) mikrofonu taşır ama telefon görüşmeleri için tasarlanmış, düşük kaliteli mono ses çalar. Herhangi bir uygulama kulaklık mikrofonunu açtığı anda Windows kulaklığı Hands-Free moduna geçirir: Call of Duty ya da Fortnite gibi sesli sohbetli bir oyun, Discord, Microsoft Teams, Zoom, tarayıcıda Google Meet, Steam sesli sohbeti, Xbox Game Bar, OBS Studio veya bir sesli asistan. O andan sonra duyduğunuz her şey de sıkıştırılmış ve boğuk çalar. Üstelik bazen uygulama mikrofonu bıraktıktan sonra bile Windows geri geçmez.\n\nNe olduğunu görün. Tepsi simgesi, kulaklığın stereo çalıp çalmadığını, arama moduna düşüp düşmediğini ya da “Her zaman stereo” ile korunup korunmadığını bir bakışta gösterir. Simgeye tıklayın; panel kulaklık mikrofonunu şu anda kullanan uygulamaları söyler ve kulaklık varsayılan Windows mikrofonuysa sizi uyarır; sürekli geçiş yapmasının en yaygın nedeni budur. İsteğe bağlı Windows bildirimleri, ses mono olduğu anda ve mikrofonu hangi uygulamanın açtığını size bildirir.\n\nStereoyu tek tıkla geri getirin. Kulaklık arama modunda takılıp kaldığında “Stereoyu geri getir”, kulaklığı yeniden bağlamışsınız gibi kulaklık sesini bir kez yeniden başlatır ve hiçbir Windows ayarını değiştirmez. Arama modu biter, ses yine stereo olur ve kulaklık mikrofonu sonraki görüşmeniz için çalışmaya devam eder. Panel her adımı canlı gösterir ve yanıt vermeyi bırakan Bluetooth Hands-Free hizmetini bile kurtarır.\n\nOyuncular ve ayrı mikrofonu olan herkes için “Her zaman stereo”. Dizüstü, USB ya da masaüstü mikrofonla konuşuyorsanız veya hiç mikrofona ihtiyacınız yoksa “Her zaman stereo” seçeneğini açın. Windows'ta Bluetooth Hands-Free profilini kapatır; böylece hiçbir oyun veya uygulama kulaklığınızı bir daha arama moduna geçiremez: oyunlarda bas, detay ve konumsal ses sunan tam A2DP stereoyu her zaman alırsınız. Anahtar bedeli konusunda dürüsttür: açıkken kulaklığın kendi mikrofonu çalışmaz.\n\nGüvenli ve tamamen geri alınabilir. “Her zaman stereo” bir şeyi değiştirmeden önce StereoKeeper, Windows'un tam olarak nasıl yapılandırıldığını hatırlar. Anahtarı kapattığınızda Windows tam olarak o duruma döner ve arama moduna yeniden izin verilir. Her işlemden sonra uygulama sonucu denetler; yerleşik yardım ise her düğmenin neyi değiştirdiğini ve nasıl geri alınacağını sade bir dille anlatır. Windows yalnızca uygulama bir ayarı değiştirdiğinde izin ister; kulaklığı izlemek için hiçbir zaman gerekmez.\n\nOyuncular, yayıncılar, uzaktan çalışanlar ve öğrenciler için: sesli sohbet başlayınca oyun sesi düzleşen oyuncular, kayıt yazılımı kulaklık mikrofonunu kapan yayıncılar, Microsoft Teams ya da Zoom görüşmesinden sonra müziğin yeniden doğru çalmasını isteyenler ve AirPods, Galaxy Buds veya Sony, Bose, JBL, Jabra kulaklığı Windows bilgisayarda telefon gibi çalan herkes.\n\nHafif ve gizliliğe saygılı. StereoKeeper tepside sessizce durur; yaklaşık 25 MB bellek kullanır, işlemciyi neredeyse hiç yormaz ve ekran kartını kullanmaz, böylece oyunlar tek kare kaybetmez. Arka plan hizmeti, reklam, hesap, telemetri ve ağ bağlantısı yoktur: verileriniz bilgisayarınızda kalır. Windows ile başlatma, Windows dilinizden seçilen 30 arayüz dili ve kullanıcı klasörünüzü gizleyerek hata raporu hazırlayan “Geliştirici için bilgileri kopyala” düğmesi.\n\nSık sorulan sorular. Kulaklığım neden yalnızca Discord ya da bir oyun açıkken kötü çalıyor? Çünkü o uygulama kulaklık mikrofonunu kullanıyordur ve Windows mikrofonu yalnızca Hands-Free arama modunda kullanabilir; o uygulamada başka bir mikrofon seçin ya da “Her zaman stereo” seçeneğini açın. Kulaklık mikrofonumu kaybeder miyim? “Stereoyu geri getir” ile hayır. Yalnızca “Her zaman stereo” onu kapatır, o da anahtarı kapatana kadar. StereoKeeper sürücülerimi veya ses efektlerimi değiştirir mi? Hayır. Sürücü ya da ses efekti yüklemez; yalnızca stereo ile arama modu arasında karar veren Windows Bluetooth Hands-Free hizmetlerini yeniden başlatır veya kapatır. Kaldırmadan önce ne yapmalıyım? Önce “Her zaman stereo” seçeneğini kapatın, böylece Windows tam olarak eski haline döner.\n\nWindows 11 ve Windows 10'da (sürüm 2004 veya üzeri), x64 ve Arm bilgisayarlarda, standart Hands-Free profilini kullanan, yani neredeyse tüm Bluetooth kulaklıklar, kulak içi kulaklıklar ve kulaklık setleriyle çalışır. StereoKeeper ücretsiz ve MIT lisansı altında açık kaynaklıdır; kaynak kodu GitHub'dadır.",
+  "features": [
+    "Windows 11 ve 10'da boğuk, mono Bluetooth kulaklık sesini düzeltir",
+    "Tek tık, Windows ayarlarını değiştirmeden stereoyu geri getirir",
+    "Kulaklık mikrofonunu şu an hangi uygulamanın kullandığını gösterir",
+    "Tepsi simgesi stereo, arama modu veya “Her zaman stereo” durumunu gösterir",
+    "“Her zaman stereo” Hands-Free (HFP) arama modunu kalıcı olarak engeller",
+    "“Her zaman stereo” kapatılınca Windows tam eski haline döner",
+    "“Stereoyu geri getir” sonrası kulaklık mikrofonu çalışmaya devam eder",
+    "Kulaklık varsayılan Windows mikrofonuysa sizi uyarır",
+    "Ses mono olduğunda isteğe bağlı bildirimler",
+    "Canlı adımlar her işlemde Windows'un ne yaptığını gösterir",
+    "Yanıt vermeyi bırakan Bluetooth Hands-Free hizmetini kurtarır",
+    "Her işlemden sonra sonucu denetler ve sorunları bildirir",
+    "Yerleşik yardım her düğmeyi ve nasıl geri alınacağını anlatır",
+    "Her markanın kulaklığı, kulak içi kulaklığı ve oyuncu kulaklığı için",
+    "Windows ile başlat: simge hemen tepsidedir",
+    "Yaklaşık 25 MB bellek, neredeyse sıfır işlemci, ekran kartı yok",
+    "Reklam, hesap, telemetri ve ağ bağlantısı yok",
+    "Hızlı hata raporları için “Geliştirici için bilgileri kopyala”",
+    "Windows dilinizden seçilen 30 arayüz dili",
+    "Ücretsiz ve açık kaynak (MIT lisansı), GitHub'da"
+  ],
+  "searchTerms": [
+    "kulaklık kötü ses",
+    "kulaklık boğuk ses",
+    "bluetooth kulaklık mono",
+    "telefon gibi ses",
+    "hands-free kapatma",
+    "hands-free ag audio",
+    "a2dp hfp"
+  ],
+  "screenshotCaptions": [
+    "Arama modundaki kulaklık ve mikrofonunu kullanan uygulamalar, tek tıkla stereo ve açık “Her zaman stereo”",
+    "Stereoyu adım adım geri getirme, ayarlar ve yerleşik yardım"
+  ]
+}
