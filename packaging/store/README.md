@@ -48,12 +48,14 @@ thing. The Store lists the app in the languages of the `Resources` element of
    It runs the tests, builds x64 and arm64, and writes to `artifacts\store\v<version>\`:
    - `StereoKeeper_<version>_x64_arm64.msixupload`, the package to upload;
    - `listing\`, the listing import folder (`listingData.csv`, the Store logo, screenshots).
+   - `listingData-texts.csv`, the same listing without the image paths.
 3. In Partner Center, open the app and start a new submission:
    - **Packages**: remove the previous upload and add the `.msixupload`.
-   - **Store listings**: *Import* `listing\listingData.csv` (Partner Center often fails on the
-     whole folder, the CSV alone works), then add the Store logo and the screenshots of each
-     language from `listing\` by hand, and write the release notes for this version in each
-     language (the field is left empty on purpose).
+   - **Store listings**: *Import* `listingData-texts.csv` (Partner Center often fails on the
+     whole `listing` folder, and on the image paths of `listing\listingData.csv` imported alone),
+     then add the Store logo and the screenshots of each language from `listing\` by hand, and
+     write the release notes for this version in each language (the field is left empty on
+     purpose).
    - Submit. Certification usually takes one to three business days.
 
 ## Test on this PC before uploading

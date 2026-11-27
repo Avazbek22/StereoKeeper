@@ -196,8 +196,11 @@ function New-StoreListing {
     }
 
     $rows = Import-Csv -LiteralPath $listingSchemaPath -Encoding UTF8
+    $header = (@("Field", "ID", "Type (Type)", "default") + $languages | ForEach-Object { ConvertTo-CsvValue $_ }) -join ","
     $lines = [Collections.Generic.List[string]]::new()
-    $lines.Add((@("Field", "ID", "Type (Type)", "default") + $languages | ForEach-Object { ConvertTo-CsvValue $_ }) -join ",")
+    $textLines = [Collections.Generic.List[string]]::new()
+    $lines.Add($header)
+    $textLines.Add($header)
 
     foreach ($row in $rows) {
         $values = foreach ($language in $languages) {
@@ -206,11 +209,24 @@ function New-StoreListing {
 
         $cells = @($row.Field, $row.ID, $row."Type (Type)", "") + @($values)
         $lines.Add(($cells | ForEach-Object { ConvertTo-CsvValue ([string]$_) }) -join ",")
+
+        $textCells = if ($row.Field -match '^(DesktopScreenshot\d+|StoreLogo300x300)$') {
+            @($row.Field, $row.ID, $row."Type (Type)", "") + @($languages | ForEach-Object { "" })
+        } else {
+            $cells
+        }
+        $textLines.Add(($textCells | ForEach-Object { ConvertTo-CsvValue ([string]$_) }) -join ",")
     }
 
     # Partner Center imports only UTF-8 without a byte order mark, with CRLF line endings.
+    $encoding = [Text.UTF8Encoding]::new($false)
     $csvPath = Join-Path $Destination "listingData.csv"
-    [IO.File]::WriteAllText($csvPath, ($lines -join "`r`n") + "`r`n", [Text.UTF8Encoding]::new($false))
+    [IO.File]::WriteAllText($csvPath, ($lines -join "`r`n") + "`r`n", $encoding)
+
+    # Partner Center often fails to import the whole folder, and a CSV imported on its own fails
+    # on the image paths. This copy has the texts only; the images are then added by hand.
+    $textCsvPath = Join-Path (Split-Path -Parent $Destination) "listingData-texts.csv"
+    [IO.File]::WriteAllText($textCsvPath, ($textLines -join "`r`n") + "`r`n", $encoding)
     return $csvPath
 }
 
