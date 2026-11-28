@@ -21,6 +21,9 @@
   <a href="https://github.com/Avazbek22/StereoKeeper/releases">
     <img src="https://img.shields.io/github/downloads/Avazbek22/StereoKeeper/total?style=flat-square&color=0078d4" alt="Total downloads">
   </a>
+  <a href="https://apps.microsoft.com/detail/9N3QLB1RBBBC">
+    <img src="https://img.shields.io/badge/Microsoft%20Store-available-0078D4?style=flat-square&logo=microsoftstore&logoColor=white" alt="Available in the Microsoft Store">
+  </a>
   <img src="https://img.shields.io/badge/Windows-10%20%7C%2011-0078D4?style=flat-square&logo=windows11&logoColor=white" alt="Windows 10 and 11">
   <img src="https://img.shields.io/badge/.NET-10-512BD4?style=flat-square&logo=dotnet&logoColor=white" alt=".NET 10">
   <img src="https://img.shields.io/badge/languages-30-EF2D5E?style=flat-square" alt="30 interface languages">
@@ -68,6 +71,14 @@ Every action shows what Windows is doing right now, settings are one click away,
 
 <a id="download"></a>
 ## Download 🚀
+
+<p align="center">
+  <a href="https://apps.microsoft.com/detail/9N3QLB1RBBBC?mode=direct">
+    <img src="https://get.microsoft.com/images/en-us%20dark.svg" width="220" alt="Get StereoKeeper from the Microsoft Store">
+  </a>
+</p>
+
+**Microsoft Store:** one-click install with automatic updates, for x64 and Arm PCs.
 
 **Latest GitHub release:**
 👉 [https://github.com/Avazbek22/StereoKeeper/releases/latest](https://github.com/Avazbek22/StereoKeeper/releases/latest)
@@ -146,7 +157,7 @@ On Windows 11, A2DP and HFP are exposed through unified audio endpoints, and Win
 
 ## Quick start
 
-1. Download `StereoKeeper-v<version>-win-x64.exe` (or `win-arm64` for ARM PCs) from the [latest release](https://github.com/Avazbek22/StereoKeeper/releases/latest), or install it with WinGet.
+1. Download `StereoKeeper-v<version>-win-x64.exe` (or `win-arm64` for ARM PCs) from the [latest release](https://github.com/Avazbek22/StereoKeeper/releases/latest), or install it from the [Microsoft Store](https://apps.microsoft.com/detail/9N3QLB1RBBBC) or with WinGet.
 2. Run it. The icon appears in the Windows tray (check the hidden icons arrow and pin it to the taskbar if you like).
 3. Click the icon. If the headphones are in call mode, the panel names the app that is using the headset microphone: close it or choose another microphone in it.
 4. Click **Bring back stereo**. Windows asks for permission each time the app changes services: click **Yes**.
