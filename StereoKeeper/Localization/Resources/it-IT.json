@@ -274,6 +274,7 @@
   "gui.help.safety.body": "Mostrare lo stato non richiede permessi speciali. Per «Ripristina stereo» e «Sempre stereo», Windows chiede il permesso ogni volta.",
   "gui.help.details.title": "Per i curiosi",
   "gui.help.details.body": "La modalità chiamata è il profilo Bluetooth HFP, lo stereo è A2DP. Il Bluetooth Classic non può fare entrambi insieme. L'app gestisce i servizi di Windows BTAGService e BthHFSrv. Dopo la disinstallazione restano solo le sue impostazioni in %AppData%\\StereoKeeper e il suo registro in %LocalAppData%\\StereoKeeper. Non influiscono sull'audio e puoi eliminare queste cartelle.",
+  "gui.help.details.storeBody": "La modalità chiamata è il profilo Bluetooth HFP, lo stereo è A2DP. Il Bluetooth Classic non può fare entrambi insieme. L'app gestisce i servizi di Windows BTAGService e BthHFSrv. Le sue impostazioni e il suo registro sono conservati nella cartella propria dell'app, e Windows li elimina insieme all'app.",
   "gui.tray.open": "Apri StereoKeeper",
   "gui.tray.exit": "Esci",
   "gui.tooltip.stereo": "stereo",

@@ -274,6 +274,7 @@
   "gui.help.safety.body": "显示状态不需要特殊权限。执行“恢复立体声”和“始终立体声”时，Windows 每次都会请求权限。",
   "gui.help.details.title": "给好奇的人",
   "gui.help.details.body": "通话模式是蓝牙 HFP 配置文件，立体声是 A2DP。经典蓝牙无法同时使用两者。本应用管理 Windows 服务 BTAGService 和 BthHFSrv。卸载后，只会留下 %AppData%\\StereoKeeper 中的设置和 %LocalAppData%\\StereoKeeper 中的日志。它们不影响声音，您可以删除这些文件夹。",
+  "gui.help.details.storeBody": "通话模式是蓝牙 HFP 配置文件，立体声是 A2DP。经典蓝牙无法同时使用两者。本应用管理 Windows 服务 BTAGService 和 BthHFSrv。其设置和日志保存在应用自己的文件夹中，Windows 会随应用一并将其删除。",
   "gui.tray.open": "打开 StereoKeeper",
   "gui.tray.exit": "退出",
   "gui.tooltip.stereo": "立体声",

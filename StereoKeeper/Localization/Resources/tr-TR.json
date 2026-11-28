@@ -274,6 +274,7 @@
   "gui.help.safety.body": "Durumu göstermek için özel izin gerekmez. “Stereoyu geri getir” ve “Her zaman stereo” için Windows her seferinde izin ister.",
   "gui.help.details.title": "Merak edenler için",
   "gui.help.details.body": "Arama modu Bluetooth HFP profili, stereo ise A2DP'dir. Bluetooth Classic ikisini aynı anda yapamaz. Uygulama BTAGService ve BthHFSrv Windows hizmetlerini yönetir. Kaldırdıktan sonra yalnızca %AppData%\\StereoKeeper içindeki ayarları ve %LocalAppData%\\StereoKeeper içindeki günlüğü kalır. Sesi etkilemezler, bu klasörleri silebilirsiniz.",
+  "gui.help.details.storeBody": "Arama modu Bluetooth HFP profili, stereo ise A2DP'dir. Bluetooth Classic ikisini aynı anda yapamaz. Uygulama BTAGService ve BthHFSrv Windows hizmetlerini yönetir. Ayarları ve günlüğü uygulamanın kendi klasöründe tutulur, Windows bunları uygulamayla birlikte siler.",
   "gui.tray.open": "StereoKeeper'i aç",
   "gui.tray.exit": "Çıkış",
   "gui.tooltip.stereo": "stereo",

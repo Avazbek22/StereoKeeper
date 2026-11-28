@@ -1,5 +1,76 @@
 Set-StrictMode -Version Latest
 
+function Invoke-NativeCommand {
+    param(
+        [Parameter(Mandatory)]
+        [string]$FilePath,
+
+        [Parameter(Mandatory)]
+        [string[]]$Arguments
+    )
+
+    Write-Host "> $FilePath $($Arguments -join ' ')" -ForegroundColor DarkGray
+    $commandOutput = @(& $FilePath @Arguments 2>&1)
+    $exitCode = $LASTEXITCODE
+
+    foreach ($outputLine in $commandOutput) {
+        Write-Host $outputLine
+    }
+
+    if ($exitCode -ne 0) {
+        throw "Command '$FilePath' failed with exit code $exitCode."
+    }
+}
+
+function Get-NativeOutput {
+    param(
+        [Parameter(Mandatory)]
+        [string]$FilePath,
+
+        [Parameter(Mandatory)]
+        [string[]]$Arguments
+    )
+
+    $output = & $FilePath @Arguments
+    if ($LASTEXITCODE -ne 0) {
+        throw "Command '$FilePath' failed with exit code $LASTEXITCODE."
+    }
+
+    return ($output -join "`n").Trim()
+}
+
+function Assert-ReleaseRepositoryState {
+    param(
+        [Parameter(Mandatory)]
+        [string]$RepositoryRoot,
+
+        [Parameter(Mandatory)]
+        [string]$ReleaseBranch
+    )
+
+    $currentBranch = Get-NativeOutput "git" @("-C", $RepositoryRoot, "branch", "--show-current")
+    if ($currentBranch -ne $ReleaseBranch) {
+        throw "Release builds must run from '$ReleaseBranch'. Current branch: '$currentBranch'."
+    }
+
+    $changes = @(& git -C $RepositoryRoot status --porcelain --untracked-files=all)
+    if ($LASTEXITCODE -ne 0) {
+        throw "Unable to inspect the Git working tree."
+    }
+
+    if ($changes.Count -gt 0) {
+        throw "Release builds require a clean working tree.`n$($changes -join "`n")"
+    }
+
+    Invoke-NativeCommand "git" @("-C", $RepositoryRoot, "fetch", "--quiet", "origin", $ReleaseBranch)
+
+    $headCommit = Get-NativeOutput "git" @("-C", $RepositoryRoot, "rev-parse", "HEAD")
+    $remoteCommit = Get-NativeOutput "git" @("-C", $RepositoryRoot, "rev-parse", "origin/$ReleaseBranch")
+    if ($headCommit -ne $remoteCommit) {
+        throw "Local '$ReleaseBranch' must exactly match 'origin/$ReleaseBranch' before publishing."
+    }
+}
+
 function ConvertTo-NormalizedVersion {
     param(
         [Parameter(Mandatory)]

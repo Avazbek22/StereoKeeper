@@ -274,6 +274,7 @@
   "gui.help.safety.body": "Щоб показати стан, особливі права не потрібні. Для «Повернути стерео» і «Завжди стерео» Windows щоразу запитує дозвіл.",
   "gui.help.details.title": "Для допитливих",
   "gui.help.details.body": "Режим дзвінка — це профіль Bluetooth HFP, стерео — A2DP. Bluetooth Classic не вміє обидва одночасно. Програма керує службами Windows BTAGService і BthHFSrv. Після видалення залишаються лише її налаштування в %AppData%\\StereoKeeper і журнал у %LocalAppData%\\StereoKeeper. Вони не впливають на звук, ці папки можна видалити.",
+  "gui.help.details.storeBody": "Режим дзвінка — це профіль Bluetooth HFP, стерео — A2DP. Bluetooth Classic не вміє обидва одночасно. Програма керує службами Windows BTAGService і BthHFSrv. Її налаштування і журнал зберігаються у власній папці програми, а Windows видаляє їх разом із програмою.",
   "gui.tray.open": "Відкрити StereoKeeper",
   "gui.tray.exit": "Вийти",
   "gui.tooltip.stereo": "стерео",

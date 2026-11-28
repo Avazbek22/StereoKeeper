@@ -396,6 +396,14 @@ Prepare and validate the next WinGet update from those local release artifacts:
 
 This produces x64/Arm64 manifests plus localized metadata for all 30 interface languages without submitting a pull request. After the matching GitHub release is public, rerun without `-LocalArtifactsDirectory`; add `-InstallTest` for the public installer check and `-Submit` only when you intentionally want WingetCreate to open the PR.
 
+Build the Microsoft Store submission (x64/Arm64 MSIX bundle and the Partner Center listing import folder):
+
+```powershell
+.\scripts\Publish-Store.ps1
+```
+
+The Store edition, local testing with a test certificate, and the Partner Center steps are described in [packaging/store/README.md](packaging/store/README.md).
+
 ## Support the project
 
 StereoKeeper is free and open source. If it saved your game night, stream, meeting, or debugging session, consider supporting continued development and testing:
@@ -412,6 +420,10 @@ Bug reports, reproducible Windows/Bluetooth edge cases, and focused pull request
 
 - [Open an issue](https://github.com/Avazbek22/StereoKeeper/issues/new)
 - [View the source](https://github.com/Avazbek22/StereoKeeper)
+
+## Privacy
+
+StereoKeeper collects no data and makes no network connections. See the [privacy policy](PRIVACY.md).
 
 ## Trademarks
 

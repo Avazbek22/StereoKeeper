@@ -274,6 +274,7 @@
   "gui.help.safety.body": "Showing the status needs no special rights. For “Bring back stereo” and “Always stereo”, Windows asks for permission every time.",
   "gui.help.details.title": "For the curious",
   "gui.help.details.body": "Call mode is the Bluetooth HFP profile, stereo is A2DP. Bluetooth Classic cannot do both at once. The app manages the Windows services BTAGService and BthHFSrv. After uninstalling, only its settings in %AppData%\\StereoKeeper and its log in %LocalAppData%\\StereoKeeper remain. They do not affect the sound, and you can delete these folders.",
+  "gui.help.details.storeBody": "Call mode is the Bluetooth HFP profile, stereo is A2DP. Bluetooth Classic cannot do both at once. The app manages the Windows services BTAGService and BthHFSrv. Its settings and log are kept in the app's own folder, and Windows deletes them together with the app.",
   "gui.tray.open": "Open StereoKeeper",
   "gui.tray.exit": "Exit",
   "gui.tooltip.stereo": "stereo",

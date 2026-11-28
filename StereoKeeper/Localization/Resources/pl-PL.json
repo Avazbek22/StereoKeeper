@@ -274,6 +274,7 @@
   "gui.help.safety.body": "Pokazywanie stanu nie wymaga specjalnych uprawnień. Dla „Przywróć stereo” i „Zawsze stereo” Windows prosi o zgodę za każdym razem.",
   "gui.help.details.title": "Dla ciekawskich",
   "gui.help.details.body": "Tryb rozmowy to profil Bluetooth HFP, a stereo to A2DP. Bluetooth Classic nie potrafi obu naraz. Aplikacja zarządza usługami Windows BTAGService i BthHFSrv. Po odinstalowaniu zostają tylko jej ustawienia w %AppData%\\StereoKeeper i dziennik w %LocalAppData%\\StereoKeeper. Nie wpływają na dźwięk i możesz usunąć te foldery.",
+  "gui.help.details.storeBody": "Tryb rozmowy to profil Bluetooth HFP, a stereo to A2DP. Bluetooth Classic nie potrafi obu naraz. Aplikacja zarządza usługami Windows BTAGService i BthHFSrv. Jej ustawienia i dziennik są przechowywane we własnym folderze aplikacji, a Windows usuwa je razem z nią.",
   "gui.tray.open": "Otwórz StereoKeepera",
   "gui.tray.exit": "Zakończ",
   "gui.tooltip.stereo": "stereo",

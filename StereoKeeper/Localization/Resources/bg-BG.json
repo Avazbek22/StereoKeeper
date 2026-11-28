@@ -274,6 +274,7 @@
   "gui.help.safety.body": "За показване на състоянието не са нужни специални права. За „Върни стерео“ и „Винаги стерео“ Windows всеки път иска разрешение.",
   "gui.help.details.title": "За любопитните",
   "gui.help.details.body": "Режимът на разговор е Bluetooth профилът HFP, стерео е A2DP. Bluetooth Classic не може и двата едновременно. Програмата управлява услугите на Windows BTAGService и BthHFSrv. След деинсталиране остават само настройките ѝ в %AppData%\\StereoKeeper и дневникът ѝ в %LocalAppData%\\StereoKeeper. Те не влияят на звука и можете да изтриете тези папки.",
+  "gui.help.details.storeBody": "Режимът на разговор е Bluetooth профилът HFP, стерео е A2DP. Bluetooth Classic не може и двата едновременно. Програмата управлява услугите на Windows BTAGService и BthHFSrv. Настройките и дневникът ѝ се пазят в собствената папка на програмата, а Windows ги изтрива заедно с нея.",
   "gui.tray.open": "Отвори StereoKeeper",
   "gui.tray.exit": "Изход",
   "gui.tooltip.stereo": "стерео",

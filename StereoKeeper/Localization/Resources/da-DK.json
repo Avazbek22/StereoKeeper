@@ -274,6 +274,7 @@
   "gui.help.safety.body": "At vise status kræver ingen særlige rettigheder. Til »Gendan stereo« og »Altid stereo« beder Windows om tilladelse hver gang.",
   "gui.help.details.title": "For de nysgerrige",
   "gui.help.details.body": "Opkaldstilstand er Bluetooth-profilen HFP, stereo er A2DP. Klassisk Bluetooth kan ikke begge dele på én gang. Programmet styrer Windows-tjenesterne BTAGService og BthHFSrv. Efter afinstallation er kun dets indstillinger i %AppData%\\StereoKeeper og dets log i %LocalAppData%\\StereoKeeper tilbage. De påvirker ikke lyden, og du kan slette mapperne.",
+  "gui.help.details.storeBody": "Opkaldstilstand er Bluetooth-profilen HFP, stereo er A2DP. Klassisk Bluetooth kan ikke begge dele på én gang. Programmet styrer Windows-tjenesterne BTAGService og BthHFSrv. Dets indstillinger og log gemmes i programmets egen mappe, og Windows sletter dem sammen med programmet.",
   "gui.tray.open": "Åbn StereoKeeper",
   "gui.tray.exit": "Luk",
   "gui.tooltip.stereo": "stereo",

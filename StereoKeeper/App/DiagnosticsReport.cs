@@ -12,6 +12,7 @@ internal sealed record DiagnosticsInput(
     string Runtime,
     bool IsAdministrator,
     string Language,
+    string Package,
     DateTimeOffset CreatedAt,
     string Status,
     string LogPath,
@@ -48,9 +49,10 @@ public static class DiagnosticsReport
             $"{info.FrameworkDescription}, {RuntimeInformation.ProcessArchitecture} process on {RuntimeInformation.OSArchitecture}",
             info.IsAdministrator,
             Text.CurrentLanguageDefinition.Code,
+            PackageIdentity.FamilyName is { } familyName ? $"Microsoft Store ({familyName})" : "portable exe",
             DateTimeOffset.Now,
             status,
-            CrashLog.FilePath,
+            CrashLog.DisplayPath,
             ReadLogTail(CrashLog.FilePath, LogTailLines));
 
         return Format(input, Environment.GetFolderPath(Environment.SpecialFolder.UserProfile));
@@ -67,6 +69,7 @@ public static class DiagnosticsReport
             .AppendLine(CultureInfo.InvariantCulture, $"Runtime: {input.Runtime}")
             .AppendLine(CultureInfo.InvariantCulture, $"Administrator: {(input.IsAdministrator ? "yes" : "no")}")
             .AppendLine(CultureInfo.InvariantCulture, $"Language: {input.Language}")
+            .AppendLine(CultureInfo.InvariantCulture, $"Package: {input.Package}")
             .AppendLine()
             .AppendLine(input.Status.TrimEnd())
             .AppendLine()

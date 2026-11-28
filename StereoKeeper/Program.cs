@@ -36,11 +36,17 @@ internal static class Program
         InstallCrashLogging();
         InitializeLanguage();
 
+        options = StoreStartup.Resolve(options);
+
         // A second launch (Start menu, desktop shortcut) just opens the flyout of the running app.
+        // A second start at sign-in (both the portable exe and the Store app set to start with
+        // Windows) must not pop the panel open, so it just exits.
         using var instance = SingleInstance.TryAcquire();
         if (instance is null)
         {
-            SingleInstance.SignalRunningInstance();
+            if (!options.StartHidden)
+                SingleInstance.SignalRunningInstance();
+
             return 0;
         }
 
@@ -82,14 +88,14 @@ internal static class Program
                 : new ElevatedOperationRunner(Environment.ProcessPath ?? AppInfo.AppName + ".exe");
 
             new StartupRecovery(new MessageBoxDialog(), runner, engine.GetServiceSnapshots)
-                .Report(exception, CrashLog.FilePath);
+                .Report(exception, CrashLog.DisplayPath);
         }
         catch (Exception failure) when (failure is not OutOfMemoryException)
         {
             CrashLog.Write("The startup error could not be explained", failure);
             _ = MessageBoxW(
                 IntPtr.Zero,
-                $"{exception.Message}\n\n{CrashLog.FilePath}",
+                $"{exception.Message}\n\n{CrashLog.DisplayPath}",
                 "StereoKeeper could not start",
                 MbOk | MbIconError | MbSetForeground);
         }
